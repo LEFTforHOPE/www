@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tomáš Kyjovský — IT Manager & Solutions Architect - 2026</title>
+<title>Tomáš Kyjovský — IT Manager & Solutions Architect</title>
 <meta name="description" content="Osobní stránka Tomáše Kyjovského — IT Manager, Solutions Architect a cloudový specialista z Ústí nad Labem.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -51,12 +51,24 @@
   }
   nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
   .brand{font-family:'Lora';font-weight:600;font-size:1.15rem;letter-spacing:.2px}
+  .navright{display:flex;align-items:center;gap:24px}
   .navlinks{display:flex;gap:28px}
   .navlinks a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .2s;position:relative}
   .navlinks a:hover{color:var(--accent)}
   .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .25s}
   .navlinks a:hover::after{width:100%}
+  .langswitch{display:flex;gap:3px;align-items:center}
+  .langswitch button{
+    display:inline-flex;align-items:center;gap:6px;
+    border:none;background:transparent;cursor:pointer;
+    font-family:'Work Sans',sans-serif;font-size:.76rem;font-weight:600;color:var(--ink-soft);
+    padding:5px 9px;border-radius:999px;transition:.2s;letter-spacing:.03em;
+  }
+  .langswitch button svg{width:20px;height:14px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.1);display:block;flex:0 0 auto}
+  .langswitch button:hover{color:var(--accent);background:var(--accent-soft)}
+  .langswitch button.active{background:var(--accent);color:#fff}
   @media(max-width:640px){.navlinks{display:none}}
+  @media(max-width:480px){.langswitch button{padding:5px 6px;gap:0}.langswitch .ll{display:none}}
 
   /* ---------- HERO ---------- */
   header{padding:72px 0 40px}
@@ -128,8 +140,6 @@
   .tl-tags span{background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.78rem;color:var(--ink-soft)}
 
   /* ---------- GRID cards (edu / skills) ---------- */
-  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
   .card{
     background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
     padding:26px 28px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;
@@ -184,12 +194,32 @@
   <nav>
     <div class="wrap">
       <div class="brand">Tomáš&nbsp;Kyjovský</div>
-      <div class="navlinks">
-        <a href="#o-mne">O mně</a>
-        <a href="#zkusenosti">Zkušenosti</a>
-        <a href="#vzdelani">Vzdělání</a>
-        <a href="#dovednosti">Dovednosti</a>
-        <a href="#kontakt">Kontakt</a>
+      <div class="navright">
+        <div class="navlinks">
+          <a href="#o-mne" data-i18n="nav_about">O mně</a>
+          <a href="#zkusenosti" data-i18n="nav_exp">Zkušenosti</a>
+          <a href="#vzdelani" data-i18n="nav_edu">Vzdělání</a>
+          <a href="#dovednosti" data-i18n="nav_skills">Dovednosti</a>
+          <a href="#kontakt" data-i18n="nav_contact">Kontakt</a>
+        </div>
+        <div class="langswitch">
+          <button data-lang="cs" class="active" aria-label="Čeština">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="7" fill="#fff"/><rect y="7" width="20" height="7" fill="#D7141A"/><path d="M0 0 L10 7 L0 14 Z" fill="#11457E"/></svg>
+            <span class="ll">CZ</span>
+          </button>
+          <button data-lang="en" aria-label="English">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#fff" stroke-width="3"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#C8102E" stroke-width="1.4"/><rect x="8" width="4" height="14" fill="#fff"/><rect y="5" width="20" height="4" fill="#fff"/><rect x="9" width="2" height="14" fill="#C8102E"/><rect y="6" width="20" height="2" fill="#C8102E"/></svg>
+            <span class="ll">EN</span>
+          </button>
+          <button data-lang="de" aria-label="Deutsch">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="4.67" fill="#000"/><rect y="4.67" width="20" height="4.67" fill="#DD0000"/><rect y="9.34" width="20" height="4.66" fill="#FFCE00"/></svg>
+            <span class="ll">DE</span>
+          </button>
+          <button data-lang="fr" aria-label="Français">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><rect width="6.67" height="14" fill="#0055A4"/><rect x="13.33" width="6.67" height="14" fill="#EF4135"/></svg>
+            <span class="ll">FR</span>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
@@ -200,12 +230,12 @@
         <div class="avatar">TK</div>
         <div class="hero-text">
           <span class="eyebrow">IT Manager &amp; Solutions Architect</span>
-          <h1>Ahoj, jsem&nbsp;<span class="accent">Tomáš</span>.</h1>
-          <div class="role">Přes 20 let stavím a spravuji IT — od kódu po cloudovou architekturu.</div>
-          <div class="loc">📍 Ústí nad Labem, Česko</div>
+          <h1 data-i18n-html="hero_greeting">Ahoj, jsem&nbsp;<span class="accent">Tomáš</span>.</h1>
+          <div class="role" data-i18n="hero_role">Přes 20 let stavím a spravuji IT — od kódu po cloudovou architekturu.</div>
+          <div class="loc" data-i18n="hero_loc">📍 Ústí nad Labem, Česko</div>
           <div class="hero-cta">
-            <a class="btn primary" href="#kontakt">Ozvěte se mi</a>
-            <a class="btn ghost" href="#zkusenosti">Moje cesta</a>
+            <a class="btn primary" href="#kontakt" data-i18n="btn_contact">Ozvěte se mi</a>
+            <a class="btn ghost" href="#zkusenosti" data-i18n="btn_journey">Moje cesta</a>
           </div>
         </div>
       </div>
@@ -214,15 +244,15 @@
 
   <section id="o-mne">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">01</span><h2>O mně</h2><span class="line"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">01</span><h2 data-i18n="nav_about">O mně</h2><span class="line"></span></div>
       <div class="about-card reveal">
-        <p>Jsem <b>IT Manager</b> a <b>Senior Solutions Architect</b> s praxí, která začala u procesního inženýrství a přes vývoj softwaru mě dovedla až k vedení IT a návrhu cloudové infrastruktury. Nejraději mám okamžik, kdy se ze složitého technického problému stane přehledné, spolehlivé řešení, které lidem usnadní práci.</p>
-        <p>Léta jsem spojený s <b>EWM HIGHTEC WELDING</b>, kde se starám o IT provoz i o <i>Digital Welding Solutions</i>. Souběžně pracuji jako nezávislý konzultant a architekt, navrhuji řešení v Microsoft Azure i Amazon AWS a pomáhám firmám v Česku, Německu i za oceánem. Baví mě propojovat sítě, bezpečnost, databáze a cloud do jednoho fungujícího celku.</p>
+        <p data-i18n-html="about_p1">Jsem <b>IT Manager</b> a <b>Senior Solutions Architect</b> s praxí, která začala u procesního inženýrství a přes vývoj softwaru mě dovedla až k vedení IT a návrhu cloudové infrastruktury. Nejraději mám okamžik, kdy se ze složitého technického problému stane přehledné, spolehlivé řešení, které lidem usnadní práci.</p>
+        <p data-i18n-html="about_p2">Léta jsem spojený s <b>EWM HIGHTEC WELDING</b>, kde se starám o IT provoz i o <i>Digital Welding Solutions</i>. Souběžně pracuji jako nezávislý konzultant a architekt, navrhuji řešení v Microsoft Azure i Amazon AWS a pomáhám firmám v Česku, Německu i za oceánem. Baví mě propojovat sítě, bezpečnost, databáze a cloud do jednoho fungujícího celku.</p>
         <div class="about-highlights">
-          <div class="chip"><b>20+</b><span>let v IT</span></div>
-          <div class="chip"><b>3</b><span>země, kde působím</span></div>
-          <div class="chip"><b>Cloud</b><span>Azure &amp; AWS architekt</span></div>
-          <div class="chip"><b>MSc</b><span>MFF UK Praha</span></div>
+          <div class="chip"><b>20+</b><span data-i18n="chip_years">let v IT</span></div>
+          <div class="chip"><b>3</b><span data-i18n="chip_countries">země, kde působím</span></div>
+          <div class="chip"><b>Cloud</b><span data-i18n="chip_cloud">Azure &amp; AWS architekt</span></div>
+          <div class="chip"><b>MSc</b><span data-i18n="chip_edu">MFF UK Praha</span></div>
         </div>
       </div>
     </div>
@@ -230,78 +260,78 @@
 
   <section id="zkusenosti">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">02</span><h2>Zkušenosti</h2><span class="line"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">02</span><h2 data-i18n="nav_exp">Zkušenosti</h2><span class="line"></span></div>
       <div class="timeline">
 
         <div class="tl-item reveal">
-          <div class="tl-date">Prosinec 2015 – současnost</div>
+          <div class="tl-date" data-i18n="d_ewmit">Prosinec 2015 – současnost</div>
           <div class="tl-role">IT Manager &amp; Digital Welding Solutions</div>
           <div class="tl-company">EWM HIGHTEC WELDING s.r.o.</div>
-          <div class="tl-desc">Vedení IT týmu, správa i rozvoj infrastruktury a projektů napříč pobočkami. Návrh cloudové architektury, síťování a bezpečnosti; člen týmu Digital Welding Solutions.</div>
+          <div class="tl-desc" data-i18n="ds_ewmit">Vedení IT týmu, správa i rozvoj infrastruktury a projektů napříč pobočkami. Návrh cloudové architektury, síťování a bezpečnosti; člen týmu Digital Welding Solutions.</div>
           <div class="tl-tags"><span>VMware / vDirector</span><span>Cisco</span><span>Sophos</span><span>HPE</span><span>SD-WAN</span><span>Azure / AWS</span></div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Prosinec 2025 – současnost</div>
+          <div class="tl-date" data-i18n="d_diamo">Prosinec 2025 – současnost</div>
           <div class="tl-role">IT System Architect</div>
-          <div class="tl-company">DIAMO, státní podnik</div>
-          <div class="tl-desc">Návrh a architektura informačních systémů.</div>
+          <div class="tl-company" data-i18n="c_diamo">DIAMO, státní podnik</div>
+          <div class="tl-desc" data-i18n="ds_diamo">Návrh a architektura informačních systémů.</div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Prosinec 2020 – současnost</div>
-          <div class="tl-role">Senior Solutions Architect · OSVČ</div>
+          <div class="tl-date" data-i18n="d_osvc">Prosinec 2020 – současnost</div>
+          <div class="tl-role" data-i18n="r_osvc">Senior Solutions Architect · OSVČ</div>
           <div class="tl-company">Tomáš Kyjovský</div>
-          <div class="tl-desc">Nezávislý konzultant a architekt řešení se specializací na cloud.</div>
-          <div class="tl-tags"><span>Cloud</span><span>Konzultace</span><span>Architektura řešení</span></div>
+          <div class="tl-desc" data-i18n="ds_osvc">Nezávislý konzultant a architekt řešení se specializací na cloud.</div>
+          <div class="tl-tags"><span>Cloud</span><span data-i18n="tag_consult">Konzultace</span><span data-i18n="tag_solarch">Architektura řešení</span></div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Listopad 2024 – současnost</div>
+          <div class="tl-date" data-i18n="d_xandor">Listopad 2024 – současnost</div>
           <div class="tl-role">Network Engineer</div>
-          <div class="tl-company">XANDOR Plastics · USA</div>
-          <div class="tl-desc">Návrh a správa síťové infrastruktury.</div>
+          <div class="tl-company" data-i18n="c_xandor">XANDOR Plastics · USA</div>
+          <div class="tl-desc" data-i18n="ds_xandor">Návrh a správa síťové infrastruktury.</div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Červenec 2013 – současnost</div>
+          <div class="tl-date" data-i18n="d_team">Červenec 2013 – současnost</div>
           <div class="tl-role">SharePoint &amp; ERP INFOR Developer, DBA</div>
-          <div class="tl-company">Teamwelder · Německo</div>
-          <div class="tl-desc">Vývoj a správa SharePointu, ERP INFOR, programování a administrace Windows Serverů.</div>
+          <div class="tl-company" data-i18n="c_team">Teamwelder · Německo</div>
+          <div class="tl-desc" data-i18n="ds_team">Vývoj a správa SharePointu, ERP INFOR, programování a administrace Windows Serverů.</div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Srpen 2024 – Říjen 2025</div>
+          <div class="tl-date" data-i18n="d_datron">Srpen 2024 – Říjen 2025</div>
           <div class="tl-role">SQL Server Developer</div>
           <div class="tl-company">DATRON, a.s. · Česká Lípa / Liberec</div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Listopad 2011 – současnost</div>
+          <div class="tl-date" data-i18n="d_sql">Listopad 2011 – současnost</div>
           <div class="tl-role">Senior SQL Database Administrator</div>
           <div class="tl-company">EWM · Jiříkov</div>
-          <div class="tl-desc">Správa databází a vývoj v C# (projekt Fern).</div>
+          <div class="tl-desc" data-i18n="ds_sql">Správa databází a vývoj v C# (projekt Fern).</div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Listopad 2013 – Únor 2015</div>
-          <div class="tl-role">CEO Software Division &amp; zakladatel</div>
-          <div class="tl-company">DONELL Group a.s. · Sasko</div>
-          <div class="tl-desc">Vedení softwarové divize, vývoj SharePointu a .NET, distribuce.</div>
+          <div class="tl-date" data-i18n="d_donell">Listopad 2013 – Únor 2015</div>
+          <div class="tl-role" data-i18n="r_donell">CEO Software Division &amp; zakladatel</div>
+          <div class="tl-company" data-i18n="c_donell">DONELL Group a.s. · Sasko</div>
+          <div class="tl-desc" data-i18n="ds_donell">Vedení softwarové divize, vývoj SharePointu a .NET, distribuce.</div>
         </div>
 
         <div class="tl-item reveal">
-          <div class="tl-date">Leden 2010 – Červen 2011</div>
+          <div class="tl-date" data-i18n="d_tsys">Leden 2010 – Červen 2011</div>
           <div class="tl-role">C# Developer</div>
-          <div class="tl-company">T-Systems · Drážďany</div>
-          <div class="tl-desc">Vývoj aplikací pro tablety a Windows Phone 7.</div>
+          <div class="tl-company" data-i18n="c_tsys">T-Systems · Drážďany</div>
+          <div class="tl-desc" data-i18n="ds_tsys">Vývoj aplikací pro tablety a Windows Phone 7.</div>
         </div>
 
         <div class="tl-item reveal sub">
-          <div class="tl-date">2006 – 2010 · začátky</div>
-          <div class="tl-role">Od procesního inženýrství k vývoji</div>
+          <div class="tl-date" data-i18n="d_start">2006 – 2010 · začátky</div>
+          <div class="tl-role" data-i18n="r_start">Od procesního inženýrství k vývoji</div>
           <div class="tl-company">EWM HIGHTEC WELDING</div>
-          <div class="tl-desc">Procesní inženýrství, CAD/CAM konstrukce a následně programování SQL, PHP a HTML — kořeny mé technické cesty.</div>
+          <div class="tl-desc" data-i18n="ds_start">Procesní inženýrství, CAD/CAM konstrukce a následně programování SQL, PHP a HTML — kořeny mé technické cesty.</div>
         </div>
 
       </div>
@@ -310,26 +340,26 @@
 
   <section id="vzdelani">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">03</span><h2>Vzdělání</h2><span class="line"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">03</span><h2 data-i18n="nav_edu">Vzdělání</h2><span class="line"></span></div>
       <div class="card reveal">
         <div class="edu-item">
-          <div class="edu-school">Univerzita Karlova — Matematicko-fyzikální fakulta</div>
-          <div class="edu-detail">Magisterský titul · Informatika, matematika, fyzika</div>
+          <div class="edu-school" data-i18n="edu1_s">Univerzita Karlova — Matematicko-fyzikální fakulta</div>
+          <div class="edu-detail" data-i18n="edu1_d">Magisterský titul · Informatika, matematika, fyzika</div>
           <div class="edu-year">2010 – 2012</div>
         </div>
         <div class="edu-item">
           <div class="edu-school">VUT Brno — FEKT</div>
-          <div class="edu-detail">Bakalář · Teleinformatika, kybernetika</div>
+          <div class="edu-detail" data-i18n="edu2_d">Bakalář · Teleinformatika, kybernetika</div>
           <div class="edu-year">2007 – 2010</div>
         </div>
         <div class="edu-item">
           <div class="edu-school">VOŠ a SPŠ Varnsdorf</div>
-          <div class="edu-detail">Maturita · IT a elektro</div>
+          <div class="edu-detail" data-i18n="edu3_d">Maturita · IT a elektro</div>
           <div class="edu-year">2003 – 2007</div>
         </div>
         <div class="edu-item">
           <div class="edu-school">VOŠ a SPŠ Varnsdorf</div>
-          <div class="edu-detail">Výuční list · Elektrotechnika (silnoproud / slaboproud)</div>
+          <div class="edu-detail" data-i18n="edu4_d">Výuční list · Elektrotechnika (silnoproud / slaboproud)</div>
           <div class="edu-year">2000 – 2003</div>
         </div>
       </div>
@@ -338,36 +368,36 @@
 
   <section id="dovednosti">
     <div class="wrap">
-      <div class="sec-head reveal"><span class="sec-num">04</span><h2>Dovednosti</h2><span class="line"></span></div>
+      <div class="sec-head reveal"><span class="sec-num">04</span><h2 data-i18n="nav_skills">Dovednosti</h2><span class="line"></span></div>
       <div class="card reveal">
         <div class="skill-group">
-          <h4>Top dovednosti</h4>
+          <h4 data-i18n="sk_top">Top dovednosti</h4>
           <div class="skill-tags">
             <span class="top">Cato</span><span class="top">Microsoft Intune</span><span class="top">Endpoint Configuration Manager</span>
           </div>
         </div>
         <div class="skill-group">
-          <h4>Cloud &amp; infrastruktura</h4>
+          <h4 data-i18n="sk_cloud">Cloud &amp; infrastruktura</h4>
           <div class="skill-tags">
             <span>Microsoft Azure</span><span>Amazon AWS</span><span>VMware / vDirector</span><span>SD-WAN</span><span>Windows Server</span><span>HPE</span>
           </div>
         </div>
         <div class="skill-group">
-          <h4>Sítě &amp; bezpečnost</h4>
+          <h4 data-i18n="sk_net">Sítě &amp; bezpečnost</h4>
           <div class="skill-tags">
-            <span>Cisco Networking</span><span>Sophos Security</span><span>Network Engineering</span>
+            <span>Cisco Networking</span><span>Sophos Security</span><span data-i18n="sk_neteng">Network Engineering</span>
           </div>
         </div>
         <div class="skill-group">
-          <h4>Vývoj &amp; data</h4>
+          <h4 data-i18n="sk_dev">Vývoj &amp; data</h4>
           <div class="skill-tags">
             <span>C# / .NET</span><span>SQL Server</span><span>SharePoint</span><span>INFOR ERP &amp; BI</span><span>PHP</span><span>HTML</span>
           </div>
         </div>
         <div class="skill-group">
-          <h4>Jazyky</h4>
+          <h4 data-i18n="sk_lang">Jazyky</h4>
           <div class="skill-tags">
-            <span>Čeština</span><span>Angličtina</span><span>Němčina</span>
+            <span data-i18n="lang_cs">Čeština</span><span data-i18n="lang_en">Angličtina</span><span data-i18n="lang_de">Němčina</span>
           </div>
         </div>
       </div>
@@ -377,8 +407,8 @@
   <section id="kontakt">
     <div class="wrap">
       <div class="contact-card reveal">
-        <h2>Pojďme se spojit</h2>
-        <p>Ať už jde o cloud, IT projekt, nebo jen chuť probrat zajímavou technologii — rád si popovídám.</p>
+        <h2 data-i18n="contact_title">Pojďme se spojit</h2>
+        <p data-i18n="contact_p">Ať už jde o cloud, IT projekt, nebo jen chuť probrat zajímavou technologii — rád si popovídám.</p>
         <div class="contact-links">
           <a href="mailto:kyjovsky.tomas@tomaskyjovsky.cz">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
@@ -403,12 +433,177 @@
 
   <footer>
     <div class="wrap">
-      © <span id="year"></span> Tomáš Kyjovský · Postaveno s <span class="heart">♥</span> v Ústí nad Labem
+      © <span id="year"></span> Tomáš Kyjovský · <span data-i18n="footer_built">Postaveno s</span> <span class="heart">♥</span> <span data-i18n="footer_in">v Ústí nad Labem</span>
     </div>
   </footer>
 
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  const I18N = {
+    nav_about:   {cs:"O mně", en:"About", de:"Über mich", fr:"À propos"},
+    nav_exp:     {cs:"Zkušenosti", en:"Experience", de:"Erfahrung", fr:"Expérience"},
+    nav_edu:     {cs:"Vzdělání", en:"Education", de:"Ausbildung", fr:"Formation"},
+    nav_skills:  {cs:"Dovednosti", en:"Skills", de:"Fähigkeiten", fr:"Compétences"},
+    nav_contact: {cs:"Kontakt", en:"Contact", de:"Kontakt", fr:"Contact"},
+
+    hero_greeting: {
+      cs:"Ahoj, jsem&nbsp;<span class='accent'>Tomáš</span>.",
+      en:"Hi, I'm&nbsp;<span class='accent'>Tomáš</span>.",
+      de:"Hallo, ich bin&nbsp;<span class='accent'>Tomáš</span>.",
+      fr:"Bonjour, je suis&nbsp;<span class='accent'>Tomáš</span>."
+    },
+    hero_role: {
+      cs:"Přes 20 let stavím a spravuji IT — od kódu po cloudovou architekturu.",
+      en:"Over 20 years building and running IT — from code to cloud architecture.",
+      de:"Seit über 20 Jahren baue und betreibe ich IT — vom Code bis zur Cloud-Architektur.",
+      fr:"Plus de 20 ans à construire et gérer l'informatique — du code à l'architecture cloud."
+    },
+    hero_loc: {
+      cs:"📍 Ústí nad Labem, Česko",
+      en:"📍 Ústí nad Labem, Czech Republic",
+      de:"📍 Ústí nad Labem, Tschechien",
+      fr:"📍 Ústí nad Labem, Tchéquie"
+    },
+    btn_contact: {cs:"Ozvěte se mi", en:"Get in touch", de:"Kontaktieren Sie mich", fr:"Contactez-moi"},
+    btn_journey: {cs:"Moje cesta", en:"My journey", de:"Mein Werdegang", fr:"Mon parcours"},
+
+    about_p1: {
+      cs:"Jsem <b>IT Manager</b> a <b>Senior Solutions Architect</b> s praxí, která začala u procesního inženýrství a přes vývoj softwaru mě dovedla až k vedení IT a návrhu cloudové infrastruktury. Nejraději mám okamžik, kdy se ze složitého technického problému stane přehledné, spolehlivé řešení, které lidem usnadní práci.",
+      en:"I'm an <b>IT Manager</b> and <b>Senior Solutions Architect</b> whose career began in process engineering and, through software development, led me to IT leadership and cloud infrastructure design. My favourite moment is when a complex technical problem turns into a clear, reliable solution that makes people's work easier.",
+      de:"Ich bin <b>IT Manager</b> und <b>Senior Solutions Architect</b>. Mein Weg begann im Prozess-Engineering und führte mich über die Softwareentwicklung bis zur IT-Leitung und zum Entwurf von Cloud-Infrastrukturen. Am liebsten mag ich den Moment, in dem aus einem komplexen technischen Problem eine klare, verlässliche Lösung wird, die den Menschen die Arbeit erleichtert.",
+      fr:"Je suis <b>IT Manager</b> et <b>Senior Solutions Architect</b>. Mon parcours a commencé dans l'ingénierie de process puis, à travers le développement logiciel, m'a mené à la direction IT et à la conception d'infrastructures cloud. Ce que je préfère, c'est le moment où un problème technique complexe devient une solution claire et fiable qui facilite le travail des gens."
+    },
+    about_p2: {
+      cs:"Léta jsem spojený s <b>EWM HIGHTEC WELDING</b>, kde se starám o IT provoz i o <i>Digital Welding Solutions</i>. Souběžně pracuji jako nezávislý konzultant a architekt, navrhuji řešení v Microsoft Azure i Amazon AWS a pomáhám firmám v Česku, Německu i za oceánem. Baví mě propojovat sítě, bezpečnost, databáze a cloud do jednoho fungujícího celku.",
+      en:"For years I've been connected with <b>EWM HIGHTEC WELDING</b>, where I look after IT operations and <i>Digital Welding Solutions</i>. In parallel I work as an independent consultant and architect, designing solutions in Microsoft Azure and Amazon AWS and helping companies in Czechia, Germany and overseas. I enjoy bringing networks, security, databases and cloud together into one working whole.",
+      de:"Seit Jahren bin ich mit <b>EWM HIGHTEC WELDING</b> verbunden, wo ich den IT-Betrieb und <i>Digital Welding Solutions</i> betreue. Parallel arbeite ich als unabhängiger Berater und Architekt, entwerfe Lösungen in Microsoft Azure und Amazon AWS und unterstütze Unternehmen in Tschechien, Deutschland und Übersee. Es macht mir Freude, Netzwerke, Sicherheit, Datenbanken und Cloud zu einem funktionierenden Ganzen zu verbinden.",
+      fr:"Depuis des années, je suis lié à <b>EWM HIGHTEC WELDING</b>, où je gère l'exploitation IT et <i>Digital Welding Solutions</i>. En parallèle, je travaille comme consultant et architecte indépendant, je conçois des solutions dans Microsoft Azure et Amazon AWS et j'accompagne des entreprises en Tchéquie, en Allemagne et outre-mer. J'aime relier réseaux, sécurité, bases de données et cloud en un ensemble cohérent."
+    },
+    chip_years:     {cs:"let v IT", en:"years in IT", de:"Jahre in der IT", fr:"ans dans l'IT"},
+    chip_countries: {cs:"země, kde působím", en:"countries I work in", de:"Länder, in denen ich tätig bin", fr:"pays où je travaille"},
+    chip_cloud:     {cs:"Azure &amp; AWS architekt", en:"Azure &amp; AWS architect", de:"Azure- &amp; AWS-Architekt", fr:"architecte Azure &amp; AWS"},
+    chip_edu:       {cs:"MFF UK Praha", en:"Charles University Prague", de:"Karls-Universität Prag", fr:"Université Charles, Prague"},
+
+    d_ewmit:  {cs:"Prosinec 2015 – současnost", en:"December 2015 – Present", de:"Dezember 2015 – heute", fr:"Décembre 2015 – aujourd'hui"},
+    ds_ewmit: {
+      cs:"Vedení IT týmu, správa i rozvoj infrastruktury a projektů napříč pobočkami. Návrh cloudové architektury, síťování a bezpečnosti; člen týmu Digital Welding Solutions.",
+      en:"Leading the IT team, managing and developing infrastructure and projects across sites. Designing cloud architecture, networking and security; member of the Digital Welding Solutions team.",
+      de:"Leitung des IT-Teams, Verwaltung und Weiterentwicklung von Infrastruktur und Projekten über mehrere Standorte. Entwurf von Cloud-Architektur, Netzwerk und Sicherheit; Mitglied des Digital-Welding-Solutions-Teams.",
+      fr:"Direction de l'équipe IT, gestion et développement de l'infrastructure et des projets sur plusieurs sites. Conception de l'architecture cloud, du réseau et de la sécurité ; membre de l'équipe Digital Welding Solutions."
+    },
+
+    d_diamo:  {cs:"Prosinec 2025 – současnost", en:"December 2025 – Present", de:"Dezember 2025 – heute", fr:"Décembre 2025 – aujourd'hui"},
+    c_diamo:  {cs:"DIAMO, státní podnik", en:"DIAMO, state enterprise", de:"DIAMO, Staatsunternehmen", fr:"DIAMO, entreprise d'État"},
+    ds_diamo: {cs:"Návrh a architektura informačních systémů.", en:"Design and architecture of information systems.", de:"Entwurf und Architektur von Informationssystemen.", fr:"Conception et architecture de systèmes d'information."},
+
+    d_osvc:   {cs:"Prosinec 2020 – současnost", en:"December 2020 – Present", de:"Dezember 2020 – heute", fr:"Décembre 2020 – aujourd'hui"},
+    r_osvc:   {cs:"Senior Solutions Architect · OSVČ", en:"Senior Solutions Architect · Self-employed", de:"Senior Solutions Architect · Selbstständig", fr:"Senior Solutions Architect · Indépendant"},
+    ds_osvc:  {cs:"Nezávislý konzultant a architekt řešení se specializací na cloud.", en:"Independent consultant and solutions architect specialising in cloud.", de:"Unabhängiger Berater und Lösungsarchitekt mit Spezialisierung auf Cloud.", fr:"Consultant indépendant et architecte de solutions spécialisé dans le cloud."},
+    tag_consult: {cs:"Konzultace", en:"Consulting", de:"Beratung", fr:"Conseil"},
+    tag_solarch: {cs:"Architektura řešení", en:"Solutions architecture", de:"Lösungsarchitektur", fr:"Architecture de solutions"},
+
+    d_xandor:  {cs:"Listopad 2024 – současnost", en:"November 2024 – Present", de:"November 2024 – heute", fr:"Novembre 2024 – aujourd'hui"},
+    c_xandor:  {cs:"XANDOR Plastics · USA", en:"XANDOR Plastics · USA", de:"XANDOR Plastics · USA", fr:"XANDOR Plastics · États-Unis"},
+    ds_xandor: {cs:"Návrh a správa síťové infrastruktury.", en:"Design and management of network infrastructure.", de:"Entwurf und Verwaltung der Netzwerkinfrastruktur.", fr:"Conception et gestion de l'infrastructure réseau."},
+
+    d_team:  {cs:"Červenec 2013 – současnost", en:"July 2013 – Present", de:"Juli 2013 – heute", fr:"Juillet 2013 – aujourd'hui"},
+    c_team:  {cs:"Teamwelder · Německo", en:"Teamwelder · Germany", de:"Teamwelder · Deutschland", fr:"Teamwelder · Allemagne"},
+    ds_team: {cs:"Vývoj a správa SharePointu, ERP INFOR, programování a administrace Windows Serverů.", en:"Development and administration of SharePoint, ERP INFOR, programming and Windows Server administration.", de:"Entwicklung und Verwaltung von SharePoint, ERP INFOR, Programmierung und Windows-Server-Administration.", fr:"Développement et administration de SharePoint, ERP INFOR, programmation et administration de serveurs Windows."},
+
+    d_datron: {cs:"Srpen 2024 – Říjen 2025", en:"August 2024 – October 2025", de:"August 2024 – Oktober 2025", fr:"Août 2024 – Octobre 2025"},
+
+    d_sql:  {cs:"Listopad 2011 – současnost", en:"November 2011 – Present", de:"November 2011 – heute", fr:"Novembre 2011 – aujourd'hui"},
+    ds_sql: {cs:"Správa databází a vývoj v C# (projekt Fern).", en:"Database administration and C# development (Fern project).", de:"Datenbankadministration und C#-Entwicklung (Projekt Fern).", fr:"Administration de bases de données et développement en C# (projet Fern)."},
+
+    d_donell:  {cs:"Listopad 2013 – Únor 2015", en:"November 2013 – February 2015", de:"November 2013 – Februar 2015", fr:"Novembre 2013 – Février 2015"},
+    r_donell:  {cs:"CEO Software Division &amp; zakladatel", en:"CEO Software Division &amp; Founder", de:"CEO Software Division &amp; Gründer", fr:"CEO Software Division &amp; fondateur"},
+    c_donell:  {cs:"DONELL Group a.s. · Sasko", en:"DONELL Group a.s. · Saxony", de:"DONELL Group a.s. · Sachsen", fr:"DONELL Group a.s. · Saxe"},
+    ds_donell: {cs:"Vedení softwarové divize, vývoj SharePointu a .NET, distribuce.", en:"Leading the software division, SharePoint and .NET development, distribution.", de:"Leitung der Softwareabteilung, SharePoint- und .NET-Entwicklung, Vertrieb.", fr:"Direction de la division logicielle, développement SharePoint et .NET, distribution."},
+
+    d_tsys:  {cs:"Leden 2010 – Červen 2011", en:"January 2010 – June 2011", de:"Januar 2010 – Juni 2011", fr:"Janvier 2010 – Juin 2011"},
+    c_tsys:  {cs:"T-Systems · Drážďany", en:"T-Systems · Dresden", de:"T-Systems · Dresden", fr:"T-Systems · Dresde"},
+    ds_tsys: {cs:"Vývoj aplikací pro tablety a Windows Phone 7.", en:"Developing apps for tablets and Windows Phone 7.", de:"Entwicklung von Apps für Tablets und Windows Phone 7.", fr:"Développement d'applications pour tablettes et Windows Phone 7."},
+
+    d_start:  {cs:"2006 – 2010 · začátky", en:"2006 – 2010 · beginnings", de:"2006 – 2010 · Anfänge", fr:"2006 – 2010 · débuts"},
+    r_start:  {cs:"Od procesního inženýrství k vývoji", en:"From process engineering to development", de:"Vom Prozess-Engineering zur Entwicklung", fr:"De l'ingénierie de process au développement"},
+    ds_start: {cs:"Procesní inženýrství, CAD/CAM konstrukce a následně programování SQL, PHP a HTML — kořeny mé technické cesty.", en:"Process engineering, CAD/CAM design and then SQL, PHP and HTML programming — the roots of my technical journey.", de:"Prozess-Engineering, CAD/CAM-Konstruktion und anschließend SQL-, PHP- und HTML-Programmierung — die Wurzeln meines technischen Werdegangs.", fr:"Ingénierie de process, conception CAO/FAO puis programmation SQL, PHP et HTML — les racines de mon parcours technique."},
+
+    edu1_s: {cs:"Univerzita Karlova — Matematicko-fyzikální fakulta", en:"Charles University — Faculty of Mathematics and Physics", de:"Karls-Universität — Fakultät für Mathematik und Physik", fr:"Université Charles — Faculté de mathématiques et de physique"},
+    edu1_d: {cs:"Magisterský titul · Informatika, matematika, fyzika", en:"Master's degree · Computer Science, Mathematics, Physics", de:"Master · Informatik, Mathematik, Physik", fr:"Master · Informatique, mathématiques, physique"},
+    edu2_d: {cs:"Bakalář · Teleinformatika, kybernetika", en:"Bachelor's · Teleinformatics, Cybernetics", de:"Bachelor · Teleinformatik, Kybernetik", fr:"Licence · Téléinformatique, cybernétique"},
+    edu3_d: {cs:"Maturita · IT a elektro", en:"Secondary diploma · IT and Electrical engineering", de:"Abitur · IT und Elektrotechnik", fr:"Baccalauréat · IT et électrotechnique"},
+    edu4_d: {cs:"Výuční list · Elektrotechnika (silnoproud / slaboproud)", en:"Vocational certificate · Electrical engineering (high / low voltage)", de:"Berufsabschluss · Elektrotechnik (Stark- / Schwachstrom)", fr:"Certificat professionnel · Électrotechnique (courant fort / faible)"},
+
+    sk_top:    {cs:"Top dovednosti", en:"Top skills", de:"Top-Fähigkeiten", fr:"Compétences clés"},
+    sk_cloud:  {cs:"Cloud &amp; infrastruktura", en:"Cloud &amp; infrastructure", de:"Cloud &amp; Infrastruktur", fr:"Cloud &amp; infrastructure"},
+    sk_net:    {cs:"Sítě &amp; bezpečnost", en:"Networks &amp; security", de:"Netzwerk &amp; Sicherheit", fr:"Réseaux &amp; sécurité"},
+    sk_neteng: {cs:"Network Engineering", en:"Network Engineering", de:"Network Engineering", fr:"Ingénierie réseau"},
+    sk_dev:    {cs:"Vývoj &amp; data", en:"Development &amp; data", de:"Entwicklung &amp; Daten", fr:"Développement &amp; données"},
+    sk_lang:   {cs:"Jazyky", en:"Languages", de:"Sprachen", fr:"Langues"},
+    lang_cs:   {cs:"Čeština", en:"Czech", de:"Tschechisch", fr:"Tchèque"},
+    lang_en:   {cs:"Angličtina", en:"English", de:"Englisch", fr:"Anglais"},
+    lang_de:   {cs:"Němčina", en:"German", de:"Deutsch", fr:"Allemand"},
+
+    contact_title: {cs:"Pojďme se spojit", en:"Let's connect", de:"Lassen Sie uns vernetzen", fr:"Restons en contact"},
+    contact_p: {
+      cs:"Ať už jde o cloud, IT projekt, nebo jen chuť probrat zajímavou technologii — rád si popovídám.",
+      en:"Whether it's cloud, an IT project, or just the urge to talk about some interesting tech — I'm happy to chat.",
+      de:"Ob Cloud, ein IT-Projekt oder einfach Lust, über spannende Technik zu sprechen — ich freue mich auf ein Gespräch.",
+      fr:"Que ce soit le cloud, un projet IT ou simplement l'envie de parler d'une techno intéressante — je serai ravi d'échanger."
+    },
+    footer_built: {cs:"Postaveno s", en:"Built with", de:"Erstellt mit", fr:"Conçu avec"},
+    footer_in:    {cs:"v Ústí nad Labem", en:"in Ústí nad Labem", de:"in Ústí nad Labem", fr:"à Ústí nad Labem"}
+  };
+
+  const META = {
+    cs:"Osobní stránka Tomáše Kyjovského — IT Manager, Solutions Architect a cloudový specialista z Ústí nad Labem.",
+    en:"Personal site of Tomáš Kyjovský — IT Manager, Solutions Architect and cloud specialist from Ústí nad Labem.",
+    de:"Persönliche Website von Tomáš Kyjovský — IT Manager, Solutions Architect und Cloud-Spezialist aus Ústí nad Labem.",
+    fr:"Site personnel de Tomáš Kyjovský — IT Manager, Solutions Architect et spécialiste cloud d'Ústí nad Labem."
+  };
+
+  const SUPPORTED = ['cs','en','de','fr'];
+
+  function applyLang(lang){
+    if(SUPPORTED.indexOf(lang) === -1) lang = 'cs';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var t = I18N[el.getAttribute('data-i18n')];
+      if(t && t[lang] != null) el.innerHTML = t[lang];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var t = I18N[el.getAttribute('data-i18n-html')];
+      if(t && t[lang] != null) el.innerHTML = t[lang];
+    });
+    var md = document.querySelector('meta[name="description"]');
+    if(md && META[lang]) md.setAttribute('content', META[lang]);
+    document.querySelectorAll('.langswitch button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    try {
+      var url = new URL(window.location.href);
+      if(lang === 'cs') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
+      window.history.replaceState(null, '', url);
+    } catch(e){}
+  }
+
+  (function(){
+    var initial = 'cs';
+    try {
+      var p = new URLSearchParams(window.location.search).get('lang');
+      if(p && SUPPORTED.indexOf(p) !== -1) initial = p;
+      else {
+        var navLang = (navigator.language || '').slice(0,2).toLowerCase();
+        if(SUPPORTED.indexOf(navLang) !== -1) initial = navLang;
+      }
+    } catch(e){}
+    applyLang(initial);
+    document.querySelectorAll('.langswitch button').forEach(function(b){
+      b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+    });
+  })();
+
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
   },{threshold:.12});
