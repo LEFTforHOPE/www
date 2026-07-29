@@ -197,6 +197,14 @@
   }
   .contact-card h2{color:#fff;font-size:2rem;margin-bottom:10px}
   .contact-card p{color:#E7D4BF;max-width:520px;margin:0 auto 26px;font-size:1.05rem}
+  .book-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--accent);color:#fff;font-weight:600;font-size:1.02rem;
+    padding:14px 30px;border-radius:999px;margin-bottom:30px;
+    box-shadow:0 14px 28px -12px rgba(193,103,60,.85);transition:transform .18s,box-shadow .18s;
+  }
+  .book-btn:hover{transform:translateY(-2px);box-shadow:0 18px 32px -12px rgba(193,103,60,.95)}
+  .book-btn svg{width:20px;height:20px;flex:0 0 auto}
   .contact-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
   .contact-links a{
     display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);
@@ -456,6 +464,12 @@
       <div class="contact-card reveal">
         <h2 data-i18n="contact_title">Pojďme se spojit</h2>
         <p data-i18n="contact_p">Ať už jde o cloud, IT projekt, nebo jen chuť probrat zajímavou technologii — rád si popovídám.</p>
+        <div>
+          <a class="book-btn" href="https://outlook.office.com/bookwithme/user/b8ed4dd591fb440ea582884a7cbada8b@tomaskyjovsky.cz/meetingtype/RsFCC6orL06PqGMvOyyfsQ2?anonymous&amp;ismsaljsauthenabled&amp;ep=mcard" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+            <span data-i18n="btn_book">Rezervovat hovor</span>
+          </a>
+        </div>
         <div class="contact-links">
           <a href="mailto:kyjovsky.tomas@tomaskyjovsky.cz">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
@@ -599,6 +613,7 @@
       de:"Ob Cloud, ein IT-Projekt oder einfach Lust, über spannende Technik zu sprechen — ich freue mich auf ein Gespräch.",
       fr:"Que ce soit le cloud, un projet IT ou simplement l'envie de parler d'une techno intéressante — je serai ravi d'échanger."
     },
+    btn_book: {cs:"Rezervovat hovor", en:"Book a call", de:"Gespräch buchen", fr:"Réserver un appel"},
     footer_built: {cs:"Postaveno s", en:"Built with", de:"Erstellt mit", fr:"Conçu avec"},
     footer_in:    {cs:"v Ústí nad Labem", en:"in Ústí nad Labem", de:"in Ústí nad Labem", fr:"à Ústí nad Labem"}
   };
