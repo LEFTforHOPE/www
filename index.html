@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomáš Kyjovský — IT Manager & Solutions Architect</title>
+<meta name="description" content="Osobní stránka Tomáše Kyjovského — IT Manager, Solutions Architect a cloudový specialista z Ústí nad Labem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #FBF6EE;
+    --bg-soft:   #F4EADB;
+    --card:      #FFFDF9;
+    --ink:       #3A322B;
+    --ink-soft:  #6F6154;
+    --line:      #E7D9C6;
+    --accent:    #C1673C;
+    --accent-2:  #D99A5B;
+    --accent-soft:#F6E7D6;
+    --shadow:    0 18px 40px -24px rgba(80,52,30,.45);
+    --radius:    20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Work Sans',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Lora',Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .accent{color:var(--accent)}
+
+  /* soft warm blobs in background */
+  .blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.5;z-index:-1;pointer-events:none}
+  .blob.b1{width:460px;height:460px;background:#F3C99A;top:-140px;right:-120px}
+  .blob.b2{width:400px;height:400px;background:#EBC7B0;bottom:-160px;left:-140px;opacity:.4}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(251,246,238,.8);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:'Lora';font-weight:600;font-size:1.15rem;letter-spacing:.2px}
+  .navlinks{display:flex;gap:28px}
+  .navlinks a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .2s;position:relative}
+  .navlinks a:hover{color:var(--accent)}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .25s}
+  .navlinks a:hover::after{width:100%}
+  @media(max-width:640px){.navlinks{display:none}}
+
+  /* ---------- HERO ---------- */
+  header{padding:72px 0 40px}
+  .hero{display:flex;gap:44px;align-items:center}
+  @media(max-width:720px){.hero{flex-direction:column;text-align:center;gap:28px}}
+  .avatar{
+    flex:0 0 auto;width:168px;height:168px;border-radius:50%;
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+    display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:'Lora';font-weight:600;font-size:3.4rem;
+    box-shadow:var(--shadow);border:6px solid var(--card);
+    letter-spacing:1px;
+  }
+  .hero-text .eyebrow{
+    display:inline-block;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:12px;
+    background:var(--accent-soft);padding:5px 14px;border-radius:999px;
+  }
+  .hero-text h1{font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.05;font-weight:600;letter-spacing:-.5px}
+  .hero-text .role{font-size:1.25rem;color:var(--ink-soft);margin-top:10px;font-weight:500}
+  .hero-text .loc{margin-top:6px;color:var(--ink-soft);font-size:.98rem}
+  .hero-cta{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap}
+  @media(max-width:720px){.hero-cta{justify-content:center}}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;font-weight:600;font-size:.95rem;
+    transition:transform .18s,box-shadow .18s,background .2s;
+  }
+  .btn.primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -12px rgba(193,103,60,.9)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(193,103,60,.95)}
+  .btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:52px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head h2{font-size:1.9rem;font-weight:600;letter-spacing:-.3px;white-space:nowrap}
+  .sec-head .line{flex:1;height:1px;background:var(--line)}
+  .sec-num{font-family:'Lora';color:var(--accent-2);font-size:1rem;font-style:italic}
+
+  .about-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px 36px;box-shadow:var(--shadow);font-size:1.08rem;color:#4a4038;
+  }
+  .about-card p+p{margin-top:16px}
+  .about-highlights{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+  .chip{
+    background:var(--accent-soft);color:var(--accent);border-radius:12px;
+    padding:12px 16px;font-weight:600;font-size:.9rem;display:flex;flex-direction:column;line-height:1.3;
+  }
+  .chip b{font-family:'Lora';font-size:1.35rem}
+  .chip span{color:var(--ink-soft);font-weight:500;font-size:.78rem;letter-spacing:.02em}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl-item{position:relative;padding-bottom:34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-33px;top:5px;width:16px;height:16px;border-radius:50%;
+    background:var(--card);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--bg);
+  }
+  .tl-item.sub::before{border-color:var(--accent-2);width:12px;height:12px;left:-31px;top:7px}
+  .tl-date{font-size:.82rem;color:var(--accent);font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+  .tl-role{font-family:'Lora';font-size:1.2rem;font-weight:600;margin-top:2px}
+  .tl-company{color:var(--ink-soft);font-weight:500;font-size:.98rem}
+  .tl-desc{margin-top:8px;color:#54493f;font-size:.96rem}
+  .tl-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .tl-tags span{background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.78rem;color:var(--ink-soft)}
+
+  /* ---------- GRID cards (edu / skills) ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:720px){.grid2{grid-template-columns:1fr}}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 28px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 24px 46px -24px rgba(80,52,30,.5)}
+  .edu-item{padding:14px 0;border-bottom:1px dashed var(--line)}
+  .edu-item:last-child{border-bottom:none;padding-bottom:0}
+  .edu-item:first-child{padding-top:0}
+  .edu-school{font-family:'Lora';font-weight:600;font-size:1.05rem}
+  .edu-detail{color:var(--ink-soft);font-size:.92rem;margin-top:2px}
+  .edu-year{color:var(--accent);font-weight:600;font-size:.82rem;margin-top:4px}
+
+  .skill-group{margin-bottom:22px}
+  .skill-group:last-child{margin-bottom:0}
+  .skill-group h4{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;font-weight:600;font-family:'Work Sans'}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:9px}
+  .skill-tags span{
+    background:var(--card);border:1.5px solid var(--line);border-radius:999px;
+    padding:6px 15px;font-size:.86rem;font-weight:500;transition:.2s;color:#4a4038;
+  }
+  .skill-tags span:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+  .skill-tags span.top{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{
+    background:linear-gradient(135deg,#3A322B 0%,#54463a 100%);
+    color:#F6ECDD;border-radius:26px;padding:48px 44px;text-align:center;box-shadow:var(--shadow);
+  }
+  .contact-card h2{color:#fff;font-size:2rem;margin-bottom:10px}
+  .contact-card p{color:#E7D4BF;max-width:520px;margin:0 auto 26px;font-size:1.05rem}
+  .contact-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .contact-links a{
+    display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);padding:12px 20px;border-radius:14px;
+    font-weight:500;font-size:.95rem;transition:.2s;
+  }
+  .contact-links a:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+  .contact-links svg{width:18px;height:18px;flex:0 0 auto}
+
+  footer{text-align:center;padding:36px 0;color:var(--ink-soft);font-size:.88rem}
+  footer .heart{color:var(--accent)}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+  <nav>
+    <div class="wrap">
+      <div class="brand">Tomáš&nbsp;Kyjovský</div>
+      <div class="navlinks">
+        <a href="#o-mne">O mně</a>
+        <a href="#zkusenosti">Zkušenosti</a>
+        <a href="#vzdelani">Vzdělání</a>
+        <a href="#dovednosti">Dovednosti</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap">
+      <div class="hero reveal in">
+        <div class="avatar">TK</div>
+        <div class="hero-text">
+          <span class="eyebrow">IT Manager &amp; Solutions Architect</span>
+          <h1>Ahoj, jsem&nbsp;<span class="accent">Tomáš</span>.</h1>
+          <div class="role">Přes 20 let stavím a spravuji IT — od kódu po cloudovou architekturu.</div>
+          <div class="loc">📍 Ústí nad Labem, Česko</div>
+          <div class="hero-cta">
+            <a class="btn primary" href="#kontakt">Ozvěte se mi</a>
+            <a class="btn ghost" href="#zkusenosti">Moje cesta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section id="o-mne">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-num">01</span><h2>O mně</h2><span class="line"></span></div>
+      <div class="about-card reveal">
+        <p>Jsem <b>IT Manager</b> a <b>Senior Solutions Architect</b> s praxí, která začala u procesního inženýrství a přes vývoj softwaru mě dovedla až k vedení IT a návrhu cloudové infrastruktury. Nejraději mám okamžik, kdy se ze složitého technického problému stane přehledné, spolehlivé řešení, které lidem usnadní práci.</p>
+        <p>Léta jsem spojený s <b>EWM HIGHTEC WELDING</b>, kde se starám o IT provoz i o <i>Digital Welding Solutions</i>. Souběžně pracuji jako nezávislý konzultant a architekt, navrhuji řešení v Microsoft Azure i Amazon AWS a pomáhám firmám v Česku, Německu i za oceánem. Baví mě propojovat sítě, bezpečnost, databáze a cloud do jednoho fungujícího celku.</p>
+        <div class="about-highlights">
+          <div class="chip"><b>20+</b><span>let v IT</span></div>
+          <div class="chip"><b>3</b><span>země, kde působím</span></div>
+          <div class="chip"><b>Cloud</b><span>Azure &amp; AWS architekt</span></div>
+          <div class="chip"><b>MSc</b><span>MFF UK Praha</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="zkusenosti">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-num">02</span><h2>Zkušenosti</h2><span class="line"></span></div>
+      <div class="timeline">
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Prosinec 2015 – současnost</div>
+          <div class="tl-role">IT Manager &amp; Digital Welding Solutions</div>
+          <div class="tl-company">EWM HIGHTEC WELDING s.r.o.</div>
+          <div class="tl-desc">Vedení IT týmu, správa i rozvoj infrastruktury a projektů napříč pobočkami. Návrh cloudové architektury, síťování a bezpečnosti; člen týmu Digital Welding Solutions.</div>
+          <div class="tl-tags"><span>VMware / vDirector</span><span>Cisco</span><span>Sophos</span><span>HPE</span><span>SD-WAN</span><span>Azure / AWS</span></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Prosinec 2025 – současnost</div>
+          <div class="tl-role">IT System Architect</div>
+          <div class="tl-company">DIAMO, státní podnik</div>
+          <div class="tl-desc">Návrh a architektura informačních systémů.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Prosinec 2020 – současnost</div>
+          <div class="tl-role">Senior Solutions Architect · OSVČ</div>
+          <div class="tl-company">Tomáš Kyjovský</div>
+          <div class="tl-desc">Nezávislý konzultant a architekt řešení se specializací na cloud.</div>
+          <div class="tl-tags"><span>Cloud</span><span>Konzultace</span><span>Architektura řešení</span></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Listopad 2024 – současnost</div>
+          <div class="tl-role">Network Engineer</div>
+          <div class="tl-company">XANDOR Plastics · USA</div>
+          <div class="tl-desc">Návrh a správa síťové infrastruktury.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Červenec 2013 – současnost</div>
+          <div class="tl-role">SharePoint &amp; ERP INFOR Developer, DBA</div>
+          <div class="tl-company">Teamwelder · Německo</div>
+          <div class="tl-desc">Vývoj a správa SharePointu, ERP INFOR, programování a administrace Windows Serverů.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Srpen 2024 – Říjen 2025</div>
+          <div class="tl-role">SQL Server Developer</div>
+          <div class="tl-company">DATRON, a.s. · Česká Lípa / Liberec</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Listopad 2011 – současnost</div>
+          <div class="tl-role">Senior SQL Database Administrator</div>
+          <div class="tl-company">EWM · Jiříkov</div>
+          <div class="tl-desc">Správa databází a vývoj v C# (projekt Fern).</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Listopad 2013 – Únor 2015</div>
+          <div class="tl-role">CEO Software Division &amp; zakladatel</div>
+          <div class="tl-company">DONELL Group a.s. · Sasko</div>
+          <div class="tl-desc">Vedení softwarové divize, vývoj SharePointu a .NET, distribuce.</div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date">Leden 2010 – Červen 2011</div>
+          <div class="tl-role">C# Developer</div>
+          <div class="tl-company">T-Systems · Drážďany</div>
+          <div class="tl-desc">Vývoj aplikací pro tablety a Windows Phone 7.</div>
+        </div>
+
+        <div class="tl-item reveal sub">
+          <div class="tl-date">2006 – 2010 · začátky</div>
+          <div class="tl-role">Od procesního inženýrství k vývoji</div>
+          <div class="tl-company">EWM HIGHTEC WELDING</div>
+          <div class="tl-desc">Procesní inženýrství, CAD/CAM konstrukce a následně programování SQL, PHP a HTML — kořeny mé technické cesty.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="vzdelani">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-num">03</span><h2>Vzdělání</h2><span class="line"></span></div>
+      <div class="card reveal">
+        <div class="edu-item">
+          <div class="edu-school">Univerzita Karlova — Matematicko-fyzikální fakulta</div>
+          <div class="edu-detail">Magisterský titul · Informatika, matematika, fyzika</div>
+          <div class="edu-year">2010 – 2012</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">VUT Brno — FEKT</div>
+          <div class="edu-detail">Bakalář · Teleinformatika, kybernetika</div>
+          <div class="edu-year">2007 – 2010</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">VOŠ a SPŠ Varnsdorf</div>
+          <div class="edu-detail">Maturita · IT a elektro</div>
+          <div class="edu-year">2003 – 2007</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">VOŠ a SPŠ Varnsdorf</div>
+          <div class="edu-detail">Výuční list · Elektrotechnika (silnoproud / slaboproud)</div>
+          <div class="edu-year">2000 – 2003</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="dovednosti">
+    <div class="wrap">
+      <div class="sec-head reveal"><span class="sec-num">04</span><h2>Dovednosti</h2><span class="line"></span></div>
+      <div class="card reveal">
+        <div class="skill-group">
+          <h4>Top dovednosti</h4>
+          <div class="skill-tags">
+            <span class="top">Cato</span><span class="top">Microsoft Intune</span><span class="top">Endpoint Configuration Manager</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Cloud &amp; infrastruktura</h4>
+          <div class="skill-tags">
+            <span>Microsoft Azure</span><span>Amazon AWS</span><span>VMware / vDirector</span><span>SD-WAN</span><span>Windows Server</span><span>HPE</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Sítě &amp; bezpečnost</h4>
+          <div class="skill-tags">
+            <span>Cisco Networking</span><span>Sophos Security</span><span>Network Engineering</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Vývoj &amp; data</h4>
+          <div class="skill-tags">
+            <span>C# / .NET</span><span>SQL Server</span><span>SharePoint</span><span>INFOR ERP &amp; BI</span><span>PHP</span><span>HTML</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Jazyky</h4>
+          <div class="skill-tags">
+            <span>Čeština</span><span>Angličtina</span><span>Němčina</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <h2>Pojďme se spojit</h2>
+        <p>Ať už jde o cloud, IT projekt, nebo jen chuť probrat zajímavou technologii — rád si popovídám.</p>
+        <div class="contact-links">
+          <a href="mailto:kyjovsky.tomas@tomaskyjovsky.cz">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            kyjovsky.tomas@tomaskyjovsky.cz
+          </a>
+          <a href="tel:+420723661257">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
+            +420 723 661 257
+          </a>
+          <a href="https://cz.linkedin.com/in/tomáš-kyjovský-210a3232" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://www.tomaskyjovsky.cz" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg>
+            tomaskyjovsky.cz
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © <span id="year"></span> Tomáš Kyjovský · Postaveno s <span class="heart">♥</span> v Ústí nad Labem
+    </div>
+  </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
