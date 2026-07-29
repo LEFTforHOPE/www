@@ -112,11 +112,12 @@
     background:rgba(251,246,238,.8);
     border-bottom:1px solid var(--line);
   }
-  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:28px;height:64px}
   .brand{font-family:'Lora';font-weight:600;font-size:1.15rem;letter-spacing:.2px}
-  .navright{display:flex;align-items:center;gap:24px}
-  .navlinks{display:flex;gap:28px}
-  .navlinks a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .2s;position:relative}
+  .brand{flex-shrink:0}
+  .navright{display:flex;align-items:center;gap:22px;flex-shrink:0}
+  .navlinks{display:flex;gap:26px;flex-shrink:0}
+  .navlinks a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .2s;position:relative;white-space:nowrap}
   .navlinks a:hover{color:var(--accent)}
   .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .25s}
   .navlinks a:hover::after{width:100%}
@@ -139,8 +140,11 @@
   .themetoggle .ic-sun{display:none}
   html[data-theme="dark"] .themetoggle .ic-moon{display:none}
   html[data-theme="dark"] .themetoggle .ic-sun{display:inline-block}
-  @media(max-width:640px){.navlinks{display:none}}
-  @media(max-width:480px){.langswitch button{padding:5px 6px;gap:0}.langswitch .ll{display:none}}
+  /* užší obrazovky: přepínač jazyků jen na vlaječky (bez CZ/EN/DE/FR zkratek) */
+  @media(max-width:1080px){.langswitch .ll{display:none}.langswitch button{gap:0;padding:5px 7px}}
+  /* tablet a méně: skryjeme textové odkazy v liště */
+  @media(max-width:900px){.navlinks{display:none}}
+  @media(max-width:420px){.langswitch button{padding:4px 5px}.brand{font-size:1.05rem}}
 
   /* ---------- HERO ---------- */
   header{padding:72px 0 40px}
