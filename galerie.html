@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+  (function(){try{var s=localStorage.getItem('theme');var d=s?(s==='dark'):(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.setAttribute('data-theme',d?'dark':'light');}catch(e){}})();
+</script>
+<!-- ===== Azure Application Insights (návštěvnost) =====
+     NAHRAĎ řetězec YOUR_CONNECTION_STRING svým connection stringem z Azure
+     (App Insights resource → Overview → Connection String). -->
+<script type="text/javascript">
+!(function (cfg){function e(){cfg.onInit&&cfg.onInit(n)}var x,w,D,t,E,n,C=window,O=document,b=C.location,q="script",I="ingestionendpoint",L="disableExceptionTracking",j="ai.device.";"instrumentationKey"[x="toLowerCase"](),w="crossOrigin",D="POST",t="appInsightsSDK",E=cfg.name||"appInsights",(cfg.name||C[t])&&(C[t]=E),n=C[E]||function(g){var f=!1,m=!1,h={initialize:!0,queue:[],sv:"8",version:2,config:g};function v(e,t){var n={},i="Browser";function a(e){e=""+e;return 1===e.length?"0"+e:e}return n[j+"id"]=i[x](),n[j+"type"]=i,n["ai.operation.name"]=b&&b.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(h.sv||h.version),{time:(i=new Date).getUTCFullYear()+"-"+a(1+i.getUTCMonth())+"-"+a(i.getUTCDate())+"T"+a(i.getUTCHours())+":"+a(i.getUTCMinutes())+":"+a(i.getUTCSeconds())+"."+(i.getUTCMilliseconds()/1e3).toFixed(3).slice(2,5)+"Z",iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}},ver:undefined,seq:"1",aiDataContract:undefined}}var n,i,t,a,y=-1,T=0,S=["js.monitor.azure.com","js.cdn.applicationinsights.io","js.cdn.monitor.azure.com","js0.cdn.applicationinsights.io","js0.cdn.monitor.azure.com","js2.cdn.applicationinsights.io","js2.cdn.monitor.azure.com","az416426.vo.msecnd.net"],o=g.url||cfg.src,r=function(){return s(o,null)};function s(d,t){if((n=navigator)&&(~(n=(n.userAgent||"").toLowerCase()).indexOf("msie")||~n.indexOf("trident/"))&&~d.indexOf("ai.3")&&(d=d.replace(/(\/)(ai\.3\.)([^\d]*)$/,function(e,t,n){return t+"ai.2"+n})),!1!==cfg.cr)for(var e=0;e<S.length;e++)if(0<d.indexOf(S[e])){y=e;break}var n,i=function(e){var a,t,n,i,o,r,s,c,u,l;h.queue=[],m||(0<=y&&T+1<S.length?(a=(y+T+1)%S.length,p(d.replace(/^(.*\/\/)([\w\.]*)(\/.*)$/,function(e,t,n,i){return t+S[a]+i})),T+=1):(f=m=!0,s=d,!0!==cfg.dle&&(c=(t=function(){var e,t={},n=g.connectionString;if(n)for(var i=n.split(";"),a=0;a<i.length;a++){var o=i[a].split("=");2===o.length&&(t[o[0][x]()]=o[1])}return t[I]||(e=(n=t.endpointsuffix)?t.location:null,t[I]="https://"+(e?e+".":"")+"dc."+(n||"services.visualstudio.com")),t}()).instrumentationkey||g.instrumentationKey||"",t=(t=(t=t[I])&&"/"===t.slice(-1)?t.slice(0,-1):t)?t+"/v2/track":g.endpointUrl,t=g.userOverrideEndpointUrl||t,(n=[]).push((i="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",o=s,u=t,(l=(r=v(c,"Exception")).data).baseType="ExceptionData",l.baseData.exceptions=[{typeName:"SDKLoadFailed",message:i.replace(/\./g,"-"),hasFullStack:!1,stack:i+"\nSnippet failed to load ["+o+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(b&&b.pathname||"_unknown_")+"\nEndpoint: "+u,parsedStack:[]}],r)),n.push((l=s,i=t,(u=(o=v(c,"Message")).data).baseType="MessageData",(r=u.baseData).message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+l+")").replace(/\"/g,"")+'"',r.properties={endpoint:i},o)),s=n,c=t,JSON&&((u=C.fetch)&&!cfg.useXhr?u(c,{method:D,body:JSON.stringify(s),mode:"cors"}):XMLHttpRequest&&((l=new XMLHttpRequest).open(D,c),l.setRequestHeader("Content-type","application/json"),l.send(JSON.stringify(s)))))))},a=function(e,t){m||setTimeout(function(){!t&&h.core||i()},500),f=!1},p=function(e){var n=O.createElement(q),e=(n.src=e,t&&(n.integrity=t),n.setAttribute("data-ai-name",E),cfg[w]);return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=a,n.onerror=i,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||a(0,t)},cfg.ld&&cfg.ld<0?O.getElementsByTagName("head")[0].appendChild(n):setTimeout(function(){O.getElementsByTagName(q)[0].parentNode.appendChild(n)},cfg.ld||0),n};p(d)}cfg.sri&&(n=o.match(/^((http[s]?:\/\/.*\/)\w+(\.\d+){1,5})\.(([\w]+\.){0,2}js)$/))&&6===n.length?(d="".concat(n[1],".integrity.json"),i="@".concat(n[4]),l=window.fetch,t=function(e){if(!e.ext||!e.ext[i]||!e.ext[i].file)throw Error("Error Loading JSON response");var t=e.ext[i].integrity||null;s(o=n[2]+e.ext[i].file,t)},l&&!cfg.useXhr?l(d,{method:"GET",mode:"cors"}).then(function(e){return e.json()["catch"](function(){return{}})}).then(t)["catch"](r):XMLHttpRequest&&((a=new XMLHttpRequest).open("GET",d),a.onreadystatechange=function(){if(a.readyState===XMLHttpRequest.DONE)if(200===a.status)try{t(JSON.parse(a.responseText))}catch(e){r()}else r()},a.send())):o&&r();try{h.cookie=O.cookie}catch(k){}function e(e){for(;e.length;)!function(t){h[t]=function(){var e=arguments;f||h.queue.push(function(){h[t].apply(h,e)})}}(e.pop())}var c,u,l="track",d="TrackPage",p="TrackEvent",l=(e([l+"Event",l+"PageView",l+"Exception",l+"Trace",l+"DependencyData",l+"Metric",l+"PageViewPerformance","start"+d,"stop"+d,"start"+p,"stop"+p,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),h.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},(g.extensionConfig||{}).ApplicationInsightsAnalytics||{});return!0!==g[L]&&!0!==l[L]&&(e(["_"+(c="onerror")]),u=C[c],C[c]=function(e,t,n,i,a){var o=u&&u(e,t,n,i,a);return!0!==o&&h["_"+c]({message:e,url:t,lineNumber:n,columnNumber:i,error:a,evt:C.event}),o},g.autoExceptionInstrumented=!0),h}(cfg.cfg),(C[E]=n).queue&&0===n.queue.length?(n.queue.push(e),n.trackPageView({})):e();})({
+  src: "https://js.monitor.azure.com/scripts/b/ai.3.gbl.min.js",
+  crossOrigin: "anonymous",
+  cfg: {
+    connectionString: "YOUR_CONNECTION_STRING",
+    enableAutoRouteTracking: true
+  }
+});
+</script>
+<!-- ===== /Application Insights ===== -->
+<title>Galerie — Tomáš Kyjovský</title>
+<meta name="description" content="Fotogalerie — Tomáš Kyjovský.">
+<meta name="author" content="Tomáš Kyjovský">
+<link rel="canonical" href="https://www.tomaskyjovsky.cz/galerie.html">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Tomáš Kyjovský">
+<meta property="og:title" content="Galerie — Tomáš Kyjovský">
+<meta property="og:description" content="Fotogalerie — pár zachycených okamžiků.">
+<meta property="og:url" content="https://www.tomaskyjovsky.cz/galerie.html">
+<meta property="og:image" content="https://www.tomaskyjovsky.cz/og.png">
+<meta property="og:locale" content="cs_CZ">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:        #FBF6EE;
+    --bg-soft:   #F4EADB;
+    --card:      #FFFDF9;
+    --ink:       #3A322B;
+    --ink-soft:  #6F6154;
+    --line:      #E7D9C6;
+    --accent:    #C1673C;
+    --accent-2:  #D99A5B;
+    --accent-soft:#F6E7D6;
+    --shadow:    0 18px 40px -24px rgba(80,52,30,.45);
+    --radius:    20px;
+  }
+  html[data-theme="dark"]{
+    --bg:        #201B16;
+    --bg-soft:   #2A231C;
+    --card:      #2C2620;
+    --ink:       #F1E7DA;
+    --ink-soft:  #B4A392;
+    --line:      #3F362C;
+    --accent:    #E08A55;
+    --accent-2:  #D99A5B;
+    --accent-soft:#3A2C20;
+    --shadow:    0 18px 40px -24px rgba(0,0,0,.6);
+  }
+  html[data-theme="dark"] nav{background:rgba(32,27,22,.82)}
+  html[data-theme="dark"] .blob.b1{background:#7A4A28;opacity:.30}
+  html[data-theme="dark"] .blob.b2{background:#5A4030;opacity:.26}
+  html[data-theme="dark"] .about-card{color:#E4D8C8}
+  html[data-theme="dark"] .tl-desc{color:#CBBCA9}
+  html[data-theme="dark"] .skill-tags span{color:#E4D8C8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Work Sans',system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    transition:background .3s ease,color .3s ease;
+  }
+  h1,h2,h3,.serif{font-family:'Lora',Georgia,serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .accent{color:var(--accent)}
+
+  /* soft warm blobs in background */
+  .blob{position:fixed;border-radius:50%;filter:blur(70px);opacity:.5;z-index:-1;pointer-events:none}
+  .blob.b1{width:460px;height:460px;background:#F3C99A;top:-140px;right:-120px}
+  .blob.b2{width:400px;height:400px;background:#EBC7B0;bottom:-160px;left:-140px;opacity:.4}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(251,246,238,.8);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:28px;height:64px}
+  .brand{font-family:'Lora';font-weight:600;font-size:1.15rem;letter-spacing:.2px}
+  .brand{flex-shrink:0}
+  .navright{display:flex;align-items:center;gap:22px;flex-shrink:0}
+  .navlinks{display:flex;gap:26px;flex-shrink:0}
+  .navlinks a{font-size:.92rem;color:var(--ink-soft);font-weight:500;transition:color .2s;position:relative;white-space:nowrap}
+  .navlinks a:hover{color:var(--accent)}
+  .navlinks a::after{content:"";position:absolute;left:0;bottom:-6px;height:2px;width:0;background:var(--accent);transition:width .25s}
+  .navlinks a:hover::after{width:100%}
+  .langswitch{display:flex;gap:3px;align-items:center}
+  .langswitch button{
+    display:inline-flex;align-items:center;gap:6px;
+    border:none;background:transparent;cursor:pointer;
+    font-family:'Work Sans',sans-serif;font-size:.76rem;font-weight:600;color:var(--ink-soft);
+    padding:5px 9px;border-radius:999px;transition:.2s;letter-spacing:.03em;
+  }
+  .langswitch button svg{width:20px;height:14px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.1);display:block;flex:0 0 auto}
+  .langswitch button:hover{color:var(--accent);background:var(--accent-soft)}
+  .langswitch button.active{background:var(--accent);color:#fff}
+  .themetoggle{
+    border:none;background:transparent;cursor:pointer;color:var(--ink-soft);
+    padding:6px;border-radius:999px;display:inline-flex;line-height:0;transition:.2s;
+  }
+  .themetoggle:hover{color:var(--accent);background:var(--accent-soft)}
+  .themetoggle svg{width:20px;height:20px}
+  .themetoggle .ic-sun{display:none}
+  html[data-theme="dark"] .themetoggle .ic-moon{display:none}
+  html[data-theme="dark"] .themetoggle .ic-sun{display:inline-block}
+  /* užší obrazovky: přepínač jazyků jen na vlaječky (bez CZ/EN/DE/FR zkratek) */
+  @media(max-width:1080px){.langswitch .ll{display:none}.langswitch button{gap:0;padding:5px 7px}}
+  /* tablet a méně: skryjeme textové odkazy v liště */
+  @media(max-width:900px){.navlinks{display:none}}
+  @media(max-width:420px){.langswitch button{padding:4px 5px}.brand{font-size:1.05rem}}
+
+  /* ---------- HERO ---------- */
+  header{padding:72px 0 40px}
+  .hero{display:flex;gap:44px;align-items:center}
+  @media(max-width:720px){.hero{flex-direction:column;text-align:center;gap:28px}}
+  .avatar{
+    flex:0 0 auto;width:168px;height:168px;border-radius:50%;
+    overflow:hidden;box-shadow:var(--shadow);border:6px solid var(--card);
+    background:linear-gradient(135deg,var(--accent) 0%,var(--accent-2) 100%);
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .hero-text .eyebrow{
+    display:inline-block;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;margin-bottom:12px;
+    background:var(--accent-soft);padding:5px 14px;border-radius:999px;
+  }
+  .hero-text h1{font-size:clamp(2.4rem,6vw,3.6rem);line-height:1.05;font-weight:600;letter-spacing:-.5px}
+  .hero-text .role{font-size:1.25rem;color:var(--ink-soft);margin-top:10px;font-weight:500}
+  .hero-text .loc{margin-top:6px;color:var(--ink-soft);font-size:.98rem}
+  .localtime{margin-top:10px;display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+  .localtime #clock{font-weight:600;color:var(--ink)}
+  .clock-dot{width:8px;height:8px;border-radius:50%;background:#3fae6a;flex:0 0 auto;animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,174,106,.5)}70%{box-shadow:0 0 0 7px rgba(63,174,106,0)}100%{box-shadow:0 0 0 0 rgba(63,174,106,0)}}
+  .hero-cta{margin-top:22px;display:flex;gap:14px;flex-wrap:wrap}
+  @media(max-width:720px){.hero-cta{justify-content:center}}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 22px;border-radius:999px;font-weight:600;font-size:.95rem;
+    transition:transform .18s,box-shadow .18s,background .2s;
+  }
+  .btn.primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -12px rgba(193,103,60,.9)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 28px -12px rgba(193,103,60,.95)}
+  .btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:52px 0}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:34px}
+  .sec-head h2{font-size:1.9rem;font-weight:600;letter-spacing:-.3px;white-space:nowrap}
+  .sec-head .line{flex:1;height:1px;background:var(--line)}
+  .sec-num{font-family:'Lora';color:var(--accent-2);font-size:1rem;font-style:italic}
+
+  .about-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px 36px;box-shadow:var(--shadow);font-size:1.08rem;color:#4a4038;
+  }
+  .about-card p+p{margin-top:16px}
+  .about-highlights{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+  .chip{
+    background:var(--accent-soft);color:var(--accent);border-radius:12px;
+    padding:12px 16px;font-weight:600;font-size:.9rem;display:flex;flex-direction:column;line-height:1.3;
+  }
+  .chip b{font-family:'Lora';font-size:1.35rem}
+  .chip span{color:var(--ink-soft);font-weight:500;font-size:.78rem;letter-spacing:.02em}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:var(--line)}
+  .tl-item{position:relative;padding-bottom:34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{
+    content:"";position:absolute;left:-33px;top:5px;width:16px;height:16px;border-radius:50%;
+    background:var(--card);border:3px solid var(--accent);box-shadow:0 0 0 4px var(--bg);
+  }
+  .tl-item.sub::before{border-color:var(--accent-2);width:12px;height:12px;left:-31px;top:7px}
+  .tl-date{font-size:.82rem;color:var(--accent);font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+  .tl-role{font-family:'Lora';font-size:1.2rem;font-weight:600;margin-top:2px}
+  .tl-company{color:var(--ink-soft);font-weight:500;font-size:.98rem}
+  .tl-desc{margin-top:8px;color:#54493f;font-size:.96rem}
+  .tl-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+  .tl-tags span{background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.78rem;color:var(--ink-soft)}
+
+  /* ---------- GRID cards (edu / skills) ---------- */
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 28px;box-shadow:var(--shadow);transition:transform .2s,box-shadow .2s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 24px 46px -24px rgba(80,52,30,.5)}
+  .edu-item{padding:14px 0;border-bottom:1px dashed var(--line)}
+  .edu-item:last-child{border-bottom:none;padding-bottom:0}
+  .edu-item:first-child{padding-top:0}
+  .edu-school{font-family:'Lora';font-weight:600;font-size:1.05rem}
+  .edu-detail{color:var(--ink-soft);font-size:.92rem;margin-top:2px}
+  .edu-year{color:var(--accent);font-weight:600;font-size:.82rem;margin-top:4px}
+
+  .skill-group{margin-bottom:22px}
+  .skill-group:last-child{margin-bottom:0}
+  .skill-group h4{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:12px;font-weight:600;font-family:'Work Sans'}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:9px}
+  .skill-tags span{
+    background:var(--card);border:1.5px solid var(--line);border-radius:999px;
+    padding:6px 15px;font-size:.86rem;font-weight:500;transition:.2s;color:#4a4038;
+  }
+  .skill-tags span:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+  .skill-tags span.top{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{
+    background:linear-gradient(135deg,#3A322B 0%,#54463a 100%);
+    color:#F6ECDD;border-radius:26px;padding:48px 44px;text-align:center;box-shadow:var(--shadow);
+  }
+  .contact-card h2{color:#fff;font-size:2rem;margin-bottom:10px}
+  .contact-card p{color:#E7D4BF;max-width:520px;margin:0 auto 26px;font-size:1.05rem}
+  .cta-stack{display:flex;flex-direction:column;align-items:center;gap:14px;margin-bottom:30px}
+  .social-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+  .book-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--accent);color:#fff;font-weight:600;font-size:1.02rem;
+    padding:14px 30px;border-radius:999px;
+    box-shadow:0 14px 28px -12px rgba(193,103,60,.85);transition:transform .18s,box-shadow .18s;
+  }
+  .book-btn:hover{transform:translateY(-2px);box-shadow:0 18px 32px -12px rgba(193,103,60,.95)}
+  .book-btn svg{width:20px;height:20px;flex:0 0 auto}
+  .soc{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:50%;color:#F1E7DA;
+    border:1.5px solid rgba(255,255,255,.28);
+    transition:transform .18s,border-color .2s,background .2s;
+  }
+  .soc:hover{border-color:#fff;background:rgba(255,255,255,.10);transform:translateY(-2px)}
+  .soc svg{width:20px;height:20px;flex:0 0 auto}
+  .contact-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+  .contact-links a{
+    display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.16);padding:12px 20px;border-radius:14px;
+    font-weight:500;font-size:.95rem;transition:.2s;
+  }
+  .contact-links a:hover{background:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+  .contact-links svg{width:18px;height:18px;flex:0 0 auto}
+
+  footer{text-align:center;padding:36px 0;color:var(--ink-soft);font-size:.88rem}
+  footer .heart{color:var(--accent)}
+  footer .localtime{margin:0 0 12px}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+<style>
+  /* ---------- GALLERY (subpage) ---------- */
+  .gal-hero{padding:56px 0 6px;text-align:center}
+  .gal-hero .eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:14px;background:var(--accent-soft);padding:6px 16px;border-radius:999px}
+  .gal-hero h1{font-size:clamp(2.1rem,5vw,3rem);font-weight:600;letter-spacing:-.5px;line-height:1.05}
+  .gal-hero p{color:var(--ink-soft);margin-top:12px;font-size:1.08rem;max-width:560px;margin-left:auto;margin-right:auto}
+  .navlinks a.active{color:var(--accent)}
+  .navlinks a.active::after{width:100%}
+
+  .ph-note{max-width:960px;margin:22px auto 0;padding:0 24px}
+  .ph-note > div{background:var(--accent-soft);border:1px solid var(--line);color:var(--accent);border-radius:14px;padding:12px 18px;font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:10px;justify-content:center;text-align:center}
+  .ph-note svg{width:18px;height:18px;flex:0 0 auto}
+
+  section.gallery{padding:30px 0 60px}
+  .gal-grid{columns:3 300px;column-gap:16px}
+  @media(max-width:520px){.gal-grid{column-gap:12px}}
+  .tile{break-inside:avoid;margin:0 0 16px;display:block;position:relative;border-radius:16px;overflow:hidden;cursor:pointer;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow);-webkit-tap-highlight-color:transparent;animation:tilein .5s ease}
+  @keyframes tilein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .tile img{width:100%;height:auto;display:block;transition:transform .55s ease}
+  .tile:hover img,.tile:focus-visible img{transform:scale(1.06)}
+  .tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(58,50,43,0) 55%,rgba(58,50,43,.42));opacity:0;transition:opacity .3s;pointer-events:none}
+  .tile:hover::after,.tile:focus-visible::after{opacity:1}
+  .tile .zoom{position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:50%;background:rgba(255,253,249,.92);color:var(--accent);display:flex;align-items:center;justify-content:center;opacity:0;transform:translateY(6px) scale(.9);transition:.3s;z-index:2;box-shadow:0 6px 16px -6px rgba(80,52,30,.6);pointer-events:none}
+  .tile:hover .zoom,.tile:focus-visible .zoom{opacity:1;transform:none}
+  .tile .zoom svg{width:18px;height:18px}
+  .tile:focus{outline:none}
+  .tile:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;background:rgba(24,18,12,.92);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);padding:24px}
+  .lightbox.open{display:flex;animation:lbin .25s ease}
+  @keyframes lbin{from{opacity:0}to{opacity:1}}
+  .lb-figure{margin:0;max-width:92vw;max-height:88vh;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .lb-figure img{max-width:92vw;max-height:80vh;width:auto;height:auto;border-radius:12px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7)}
+  .lb-figure figcaption{color:#F1E7DA;font-size:.95rem;display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap}
+  .lb-count{color:#B4A392;font-variant-numeric:tabular-nums}
+  .lb-btn{position:absolute;border:none;background:rgba(255,253,249,.12);color:#F1E7DA;cursor:pointer;border-radius:999px;display:flex;align-items:center;justify-content:center;transition:background .2s,transform .2s;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .lb-btn:hover{background:var(--accent);transform:scale(1.05)}
+  .lb-btn svg{width:24px;height:24px}
+  .lb-close{top:18px;right:18px;width:46px;height:46px}
+  .lb-prev,.lb-next{top:50%;transform:translateY(-50%);width:52px;height:52px}
+  .lb-prev:hover,.lb-next:hover{transform:translateY(-50%) scale(1.05)}
+  .lb-prev{left:18px}
+  .lb-next{right:18px}
+  @media(max-width:600px){.lb-prev{left:8px}.lb-next{right:8px}.lb-close{top:10px;right:10px}.lb-btn{width:44px;height:44px}.lb-btn svg{width:20px;height:20px}}
+</style>
+</head>
+<body>
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+
+<nav>
+    <div class="wrap">
+      <a class="brand" href="/">Tomáš&nbsp;Kyjovský</a>
+      <div class="navright">
+        <div class="navlinks">
+          <a href="/#o-mne" data-i18n="nav_about">O mně</a>
+          <a href="/#zkusenosti" data-i18n="nav_exp">Zkušenosti</a>
+          <a href="/#vzdelani" data-i18n="nav_edu">Vzdělání</a>
+          <a href="/#dovednosti" data-i18n="nav_skills">Dovednosti</a>
+          <a href="/#kontakt" data-i18n="nav_contact">Kontakt</a>
+          <a href="/galerie.html" class="active" data-i18n="nav_gallery">Galerie</a>
+        </div>
+        <div class="langswitch">
+          <button data-lang="cs" class="active" aria-label="Čeština">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="7" fill="#fff"/><rect y="7" width="20" height="7" fill="#D7141A"/><path d="M0 0 L10 7 L0 14 Z" fill="#11457E"/></svg>
+            <span class="ll">CZ</span>
+          </button>
+          <button data-lang="en" aria-label="English">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#B22234"/><g fill="#fff"><rect y="1.08" width="20" height="1.08"/><rect y="3.23" width="20" height="1.08"/><rect y="5.38" width="20" height="1.08"/><rect y="7.54" width="20" height="1.08"/><rect y="9.69" width="20" height="1.08"/><rect y="11.85" width="20" height="1.08"/></g><rect width="8" height="7.54" fill="#3C3B6E"/><g fill="#fff"><circle cx="1.4" cy="1.4" r="0.42"/><circle cx="3.4" cy="1.4" r="0.42"/><circle cx="5.4" cy="1.4" r="0.42"/><circle cx="2.4" cy="2.9" r="0.42"/><circle cx="4.4" cy="2.9" r="0.42"/><circle cx="6.4" cy="2.9" r="0.42"/><circle cx="1.4" cy="4.4" r="0.42"/><circle cx="3.4" cy="4.4" r="0.42"/><circle cx="5.4" cy="4.4" r="0.42"/><circle cx="2.4" cy="5.9" r="0.42"/><circle cx="4.4" cy="5.9" r="0.42"/><circle cx="6.4" cy="5.9" r="0.42"/></g></svg>
+            <span class="ll">EN</span>
+          </button>
+          <button data-lang="de" aria-label="Deutsch">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="4.67" fill="#000"/><rect y="4.67" width="20" height="4.67" fill="#DD0000"/><rect y="9.34" width="20" height="4.66" fill="#FFCE00"/></svg>
+            <span class="ll">DE</span>
+          </button>
+          <button data-lang="fr" aria-label="Français">
+            <svg viewBox="0 0 20 14" aria-hidden="true"><rect width="20" height="14" fill="#fff"/><rect width="6.67" height="14" fill="#0055A4"/><rect x="13.33" width="6.67" height="14" fill="#EF4135"/></svg>
+            <span class="ll">FR</span>
+          </button>
+        </div>
+        <button class="themetoggle" id="themeToggle" type="button" aria-label="Přepnout světlý/tmavý režim">
+          <svg class="ic-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="ic-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <header class="gal-hero">
+    <div class="wrap">
+      <span class="eyebrow" data-i18n="gal_eyebrow">Galerie</span>
+      <h1 data-i18n="gal_title">Galerie</h1>
+      <p data-i18n="gal_sub">Pár zachycených okamžiků.</p>
+    </div>
+  </header>
+
+  <section class="gallery">
+    <div class="wrap">
+      <div class="gal-grid" id="galGrid"></div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" tabindex="-1" role="dialog" aria-modal="true" aria-label="Náhled fotky">
+    <button id="lbClose" class="lb-btn lb-close" type="button" aria-label="Zavřít">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <button id="lbPrev" class="lb-btn lb-prev" type="button" aria-label="Předchozí">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <figure class="lb-figure">
+      <img id="lbImg" src="" alt="">
+      <figcaption><span id="lbCap"></span><span id="lbCount" class="lb-count"></span></figcaption>
+    </figure>
+    <button id="lbNext" class="lb-btn lb-next" type="button" aria-label="Další">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+
+<footer>
+    <div class="wrap">
+      <div class="localtime"><span class="clock-dot"></span><span id="clock">--:--:--</span>&nbsp;<span data-i18n="clock_label">místního času</span></div>
+      <div class="credits">© <span id="year"></span> Tomáš Kyjovský · <span data-i18n="footer_built">Postaveno s</span> <span class="heart">♥</span> <span data-i18n="footer_in">v Ústí nad Labem</span></div>
+    </div>
+  </footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const I18N = {
+    nav_about:   {cs:"O mně", en:"About", de:"Über mich", fr:"À propos"},
+    nav_exp:     {cs:"Zkušenosti", en:"Experience", de:"Erfahrung", fr:"Expérience"},
+    nav_edu:     {cs:"Vzdělání", en:"Education", de:"Ausbildung", fr:"Formation"},
+    nav_skills:  {cs:"Dovednosti", en:"Skills", de:"Fähigkeiten", fr:"Compétences"},
+    nav_contact: {cs:"Kontakt", en:"Contact", de:"Kontakt", fr:"Contact"},
+    nav_gallery: {cs:"Galerie", en:"Gallery", de:"Galerie", fr:"Galerie"},
+    gal_eyebrow: {cs:"Galerie", en:"Gallery", de:"Galerie", fr:"Galerie"},
+    gal_title:   {cs:"Galerie", en:"Gallery", de:"Galerie", fr:"Galerie"},
+    gal_sub:     {cs:"ZOO Praha 2026", en:"Prague Zoo 2026", de:"Zoo Prag 2026", fr:"Zoo de Prague 2026"},
+    ph_note:     {cs:"Ukázkové fotky — sem přijdou tvoje z OneDrive.", en:"Placeholder photos — your OneDrive photos will go here.", de:"Platzhalterfotos — hier kommen deine OneDrive-Fotos hin.", fr:"Photos d'exemple — vos photos OneDrive viendront ici."},
+    clock_label: {cs:"místního času", en:"local time", de:"Ortszeit", fr:"heure locale"},
+    footer_built:{cs:"Postaveno s", en:"Built with", de:"Erstellt mit", fr:"Conçu avec"},
+    footer_in:   {cs:"v Ústí nad Labem", en:"in Ústí nad Labem", de:"in Ústí nad Labem", fr:"à Ústí nad Labem"}
+  };
+  const META = {
+    cs:"Fotogalerie — Tomáš Kyjovský.",
+    en:"Photo gallery — Tomáš Kyjovský.",
+    de:"Fotogalerie — Tomáš Kyjovský.",
+    fr:"Galerie photo — Tomáš Kyjovský."
+  };
+  const SUPPORTED = ['cs','en','de','fr'];
+
+  function applyLang(lang){
+    if(SUPPORTED.indexOf(lang) === -1) lang = 'cs';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var t = I18N[el.getAttribute('data-i18n')];
+      if(t && t[lang] != null) el.innerHTML = t[lang];
+    });
+    var md = document.querySelector('meta[name="description"]');
+    if(md && META[lang]) md.setAttribute('content', META[lang]);
+    document.querySelectorAll('.langswitch button').forEach(function(b){
+      b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+    });
+    try { localStorage.setItem('lang', lang); } catch(e){}
+    try {
+      var url = new URL(window.location.href);
+      if(lang === 'cs') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
+      window.history.replaceState(null, '', url);
+    } catch(e){}
+  }
+
+  (function(){
+    var initial = 'cs';
+    try {
+      var p = new URLSearchParams(window.location.search).get('lang');
+      var stored = localStorage.getItem('lang');
+      if(p && SUPPORTED.indexOf(p) !== -1) initial = p;
+      else if(stored && SUPPORTED.indexOf(stored) !== -1) initial = stored;
+      else { var nl = (navigator.language || '').slice(0,2).toLowerCase(); if(SUPPORTED.indexOf(nl) !== -1) initial = nl; }
+    } catch(e){}
+    applyLang(initial);
+    document.querySelectorAll('.langswitch button').forEach(function(b){
+      b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+    });
+  })();
+
+  (function(){
+    var btn = document.getElementById('themeToggle');
+    if(!btn) return;
+    btn.addEventListener('click', function(){
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch(e){}
+    });
+  })();
+
+  (function(){
+    var el = document.getElementById('clock');
+    if(!el) return;
+    function tick(){
+      try { el.textContent = new Intl.DateTimeFormat('cs-CZ', {timeZone:'Europe/Prague', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false}).format(new Date()); }
+      catch(e){ var d = new Date(); el.textContent = ('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2)+':'+('0'+d.getSeconds()).slice(-2); }
+    }
+    tick(); setInterval(tick, 1000);
+  })();
+
+  /* ===== GALERIE — data (generováno z manifestu; fotky na Azure Blob) ===== */
+  const PHOTOS = [
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/363cf1c5b44d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/363cf1c5b44d.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/af42150ef8d8.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/af42150ef8d8.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/175d8d817620.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/175d8d817620.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e37dfa6d1c10.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e37dfa6d1c10.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/29cedef9042f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/29cedef9042f.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0a80df4104fb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0a80df4104fb.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/18f385e367a7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/18f385e367a7.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cfb14dce4ae4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cfb14dce4ae4.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/af6a42b4273d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/af6a42b4273d.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/26b586786539.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/26b586786539.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4b6d30db58d0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4b6d30db58d0.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6f8d3c7db37f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6f8d3c7db37f.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/41e05bdecfb9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/41e05bdecfb9.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/42dec10d1cd0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/42dec10d1cd0.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/131ac842e576.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/131ac842e576.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a778d2a79d17.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a778d2a79d17.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/86bfa5edfa5c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/86bfa5edfa5c.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/ec32e0549e32.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/ec32e0549e32.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4c880f321296.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4c880f321296.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/098624bcf9e9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/098624bcf9e9.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b15aba78bc97.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b15aba78bc97.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2da7eaed6c57.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2da7eaed6c57.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9d88fc39bca0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9d88fc39bca0.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cafd22d31a73.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cafd22d31a73.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0437b55259bc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0437b55259bc.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/dbc473a56b0a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/dbc473a56b0a.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/961050c280e6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/961050c280e6.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3044923d5b90.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3044923d5b90.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5d398ea0df54.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5d398ea0df54.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2676f1efb983.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2676f1efb983.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9a9b500c616b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9a9b500c616b.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f83ceaa63afd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f83ceaa63afd.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/847e0fb80add.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/847e0fb80add.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a7c3df4f404e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a7c3df4f404e.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f2a139fc77a4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f2a139fc77a4.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/829d2aae5033.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/829d2aae5033.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6a85158d0178.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6a85158d0178.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fb4e21d442d1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fb4e21d442d1.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f4e5a2d55c58.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f4e5a2d55c58.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/71d166e60ea9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/71d166e60ea9.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/77b39adc72fc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/77b39adc72fc.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0ff5de15f51a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0ff5de15f51a.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/87a0f72f1aa0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/87a0f72f1aa0.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/55d026807b83.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/55d026807b83.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/43ace45c2f16.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/43ace45c2f16.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6c3dd85c6979.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6c3dd85c6979.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9cd03763812c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9cd03763812c.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/98fe843a27fd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/98fe843a27fd.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/ebe291cbd2ed.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/ebe291cbd2ed.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7b701017b93f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7b701017b93f.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e5f44d124e42.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e5f44d124e42.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8965f8637152.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8965f8637152.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3512c6765f54.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3512c6765f54.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7b296899a7fe.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7b296899a7fe.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f7234c7f0698.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f7234c7f0698.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/72b4984c6f47.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/72b4984c6f47.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0d6d23e621ee.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0d6d23e621ee.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cd6bf882c1d9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cd6bf882c1d9.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/80da1b6fd7f9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/80da1b6fd7f9.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d62258849b98.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d62258849b98.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7e76e90950e4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7e76e90950e4.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a9eb8b06a8e0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a9eb8b06a8e0.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/784d0133fb36.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/784d0133fb36.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5001e0bf3717.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5001e0bf3717.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/095757963ce8.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/095757963ce8.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7eb8217c4381.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7eb8217c4381.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fc0860116600.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fc0860116600.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/94dd58b4637f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/94dd58b4637f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9780a1633c58.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9780a1633c58.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e28b1816a162.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e28b1816a162.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/016e6e90a97e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/016e6e90a97e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9425f9ed601a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9425f9ed601a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a8d28552d44d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a8d28552d44d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0af2bae16422.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0af2bae16422.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6fb8a7004ddc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6fb8a7004ddc.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3db19a1c4dfd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3db19a1c4dfd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/167bcbb9f0bc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/167bcbb9f0bc.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/47e698dee1d6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/47e698dee1d6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2955ee9604ec.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2955ee9604ec.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8ede406daa1a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8ede406daa1a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bf413f9f4a3a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bf413f9f4a3a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/57e7acc8ed27.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/57e7acc8ed27.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bea3361ad276.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bea3361ad276.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0be0fb699a75.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0be0fb699a75.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8afd548b6a8d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8afd548b6a8d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b6670f55d8c0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b6670f55d8c0.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3382b8245e5e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3382b8245e5e.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9069277a34de.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9069277a34de.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a99923867f62.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a99923867f62.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/949a98a7cc1e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/949a98a7cc1e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7e1efd032a0a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7e1efd032a0a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a213907d9f8e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a213907d9f8e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6510d0d5f9f5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6510d0d5f9f5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/30fc31fb50df.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/30fc31fb50df.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f00634876dcd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f00634876dcd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fd0d6855467a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fd0d6855467a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/093142cd21ae.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/093142cd21ae.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/46dce294b4a2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/46dce294b4a2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/00eb55d3e6c6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/00eb55d3e6c6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/979f5c0b06dd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/979f5c0b06dd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/16ad8a641a71.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/16ad8a641a71.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e88f3a06fe4c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e88f3a06fe4c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/19dfc2cb63cd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/19dfc2cb63cd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d32938edf0ed.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d32938edf0ed.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/ad9d643db0f6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/ad9d643db0f6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f1096c4d9280.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f1096c4d9280.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0cf2c6bc8595.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0cf2c6bc8595.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/341bf97e85e2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/341bf97e85e2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6b533772d4c3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6b533772d4c3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/83f40fe8bf2f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/83f40fe8bf2f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/320488b73b6d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/320488b73b6d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6ee827ffbb46.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6ee827ffbb46.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2da0c3f35b23.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2da0c3f35b23.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/eecc3675fedc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/eecc3675fedc.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6e9af27b2dea.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6e9af27b2dea.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/162ac6776f15.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/162ac6776f15.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/aa7ff6c7c4ff.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/aa7ff6c7c4ff.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1213d88bc1a4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1213d88bc1a4.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/33fee807e47a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/33fee807e47a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cee9c58a57b7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cee9c58a57b7.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4a34a9d3668c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4a34a9d3668c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9742d7ad5b27.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9742d7ad5b27.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fef725e13a07.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fef725e13a07.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cd294c57fc53.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cd294c57fc53.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5f711af6a8f2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5f711af6a8f2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3a8aa8fa1d4b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3a8aa8fa1d4b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a3ac117cde4d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a3ac117cde4d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2be73780d4e1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2be73780d4e1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cc043ebf29ca.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cc043ebf29ca.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2ab09ce2532b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2ab09ce2532b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6c34dfb3bc94.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6c34dfb3bc94.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/44c4f316480e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/44c4f316480e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c71025535edf.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c71025535edf.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5a0dbf023128.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5a0dbf023128.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0ca7a3fb9510.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0ca7a3fb9510.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d870e127871b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d870e127871b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1429f570ff00.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1429f570ff00.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4d9197ee541c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4d9197ee541c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/344c0ac4a991.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/344c0ac4a991.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/448355401637.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/448355401637.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4141ad902ed1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4141ad902ed1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/06e71698a405.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/06e71698a405.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a17c0bdf4a02.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a17c0bdf4a02.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f48832b014e5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f48832b014e5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b1dd8e5fa609.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b1dd8e5fa609.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8c894c73f04c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8c894c73f04c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/909378bb03b3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/909378bb03b3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2a93f8962b30.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2a93f8962b30.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/45d9b95f60da.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/45d9b95f60da.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/24ec98dd9912.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/24ec98dd9912.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b1d577194fdc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b1d577194fdc.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6d913e329c8e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6d913e329c8e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/dcb20b2061ce.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/dcb20b2061ce.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/15116e662493.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/15116e662493.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bbf89b82fe83.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bbf89b82fe83.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/574f1a7a1f3a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/574f1a7a1f3a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/32fddfc406d9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/32fddfc406d9.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/010f16c0f2a7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/010f16c0f2a7.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d22d9a703102.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d22d9a703102.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f3666080720b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f3666080720b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c421773d21ee.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c421773d21ee.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d3e454d0bc80.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d3e454d0bc80.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/aac6a696afa9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/aac6a696afa9.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/46a173172281.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/46a173172281.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/853b90d9b0f0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/853b90d9b0f0.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a919a5d00d6b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a919a5d00d6b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/40f334bdd0aa.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/40f334bdd0aa.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4cb19a6e1ce6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4cb19a6e1ce6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/392af90e39ac.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/392af90e39ac.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/51d04327810b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/51d04327810b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cbbfc225b6d2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cbbfc225b6d2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4368c60a2436.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4368c60a2436.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/99727f12341a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/99727f12341a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1873c2e2fd15.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1873c2e2fd15.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/63989ea44f31.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/63989ea44f31.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/09762a118fbf.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/09762a118fbf.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/adb7b55c5ad3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/adb7b55c5ad3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/ebebee7eb14d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/ebebee7eb14d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9be3f47974ed.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9be3f47974ed.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/60490ef0ae9d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/60490ef0ae9d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/ac1dbd52e7ce.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/ac1dbd52e7ce.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4b9314bdab8b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4b9314bdab8b.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e5e77830e81b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e5e77830e81b.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c93014fc4942.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c93014fc4942.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d2226cf6a028.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d2226cf6a028.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1fecd9b8d499.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1fecd9b8d499.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/07b88aa593a3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/07b88aa593a3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/76d74006a459.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/76d74006a459.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f2377376be7d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f2377376be7d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/96b746379a22.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/96b746379a22.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b60423a47276.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b60423a47276.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2beefd8a473b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2beefd8a473b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/544c7be46820.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/544c7be46820.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/848a79dc9373.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/848a79dc9373.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9606b31d0f49.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9606b31d0f49.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3e8ec3ecbf7a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3e8ec3ecbf7a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6550d126f3ee.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6550d126f3ee.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/05e4ec3ff0d4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/05e4ec3ff0d4.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e0dfd606a16b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e0dfd606a16b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7261492946ad.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7261492946ad.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/57b2f2e83f08.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/57b2f2e83f08.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/647fba6eaba2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/647fba6eaba2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3a376d512468.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3a376d512468.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/445bd4c05371.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/445bd4c05371.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/27836ff58060.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/27836ff58060.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3a4ecb8da36a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3a4ecb8da36a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/10de2db6d44b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/10de2db6d44b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4bedb117127f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4bedb117127f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/68b90fa083fa.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/68b90fa083fa.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8250f6162926.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8250f6162926.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d279e90526eb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d279e90526eb.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8a469b4702f4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8a469b4702f4.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/46e8b85b3ca7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/46e8b85b3ca7.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/31a936c4a7ba.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/31a936c4a7ba.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/808d026de275.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/808d026de275.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5fffc8e809d2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5fffc8e809d2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/344dd41665b9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/344dd41665b9.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e37eaf666b9e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e37eaf666b9e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/805b68641890.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/805b68641890.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9bc30f68058e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9bc30f68058e.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4f6ac56c2346.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4f6ac56c2346.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8240a5b2eeff.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8240a5b2eeff.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d3468184b689.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d3468184b689.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d960f9786b38.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d960f9786b38.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/159fc96f6d02.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/159fc96f6d02.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6d88bb0ff76b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6d88bb0ff76b.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/91e7d5858a97.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/91e7d5858a97.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f0b076065b22.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f0b076065b22.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a65a41d3169f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a65a41d3169f.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e30ca4ebed63.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e30ca4ebed63.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/84c34c7f4930.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/84c34c7f4930.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4da049d963a1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4da049d963a1.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/75fae7dd83cc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/75fae7dd83cc.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2e0746a1104e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2e0746a1104e.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/90b262ef0e15.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/90b262ef0e15.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/921cf7459d96.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/921cf7459d96.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f69c8145233c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f69c8145233c.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9fb1ebe465ce.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9fb1ebe465ce.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c2cf206fac61.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c2cf206fac61.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/dc0a339175f9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/dc0a339175f9.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5f2685d061fc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5f2685d061fc.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/67ba45341f1b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/67ba45341f1b.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/417ef0a883bb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/417ef0a883bb.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3148cf8b3de5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3148cf8b3de5.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/335e9c9ee864.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/335e9c9ee864.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e12e10d0bb67.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e12e10d0bb67.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/47ba35a18f02.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/47ba35a18f02.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/96ff759dffe1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/96ff759dffe1.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e08840ab5fdc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e08840ab5fdc.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/471237abf13b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/471237abf13b.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9a4f5a9140b9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9a4f5a9140b9.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0c39deb0ce3b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0c39deb0ce3b.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/56a03d8c78b1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/56a03d8c78b1.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/298cd4389aa6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/298cd4389aa6.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/328ae1d04cca.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/328ae1d04cca.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c30143f6afb7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c30143f6afb7.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/215e0ce49ee5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/215e0ce49ee5.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f78d87a1051e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f78d87a1051e.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/48728ae58183.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/48728ae58183.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/dc4342e4c04a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/dc4342e4c04a.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/db348ccf136f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/db348ccf136f.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c8127775f967.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c8127775f967.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5a3ab0c2000d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5a3ab0c2000d.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bdd32383154a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bdd32383154a.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8895b08745cb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8895b08745cb.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/49285c75357c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/49285c75357c.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/acd803d2fb63.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/acd803d2fb63.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6364209b44fe.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6364209b44fe.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2938b9d64a68.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2938b9d64a68.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8288420cecf3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8288420cecf3.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/77007f9a24b3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/77007f9a24b3.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/78dfc57be879.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/78dfc57be879.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8f29cdeb0fb6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8f29cdeb0fb6.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2762b4450151.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2762b4450151.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c88655906333.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c88655906333.jpg",w:1333,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bc51cf015460.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bc51cf015460.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c21dd52ae162.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c21dd52ae162.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0bb2568b599b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0bb2568b599b.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f975de2223c0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f975de2223c0.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/400fb96cf6ce.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/400fb96cf6ce.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6d353bc6415d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6d353bc6415d.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d9d553051290.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d9d553051290.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f18f5f41c96e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f18f5f41c96e.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8a7ac42d016f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8a7ac42d016f.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2b83da375369.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2b83da375369.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f2203f01a6fb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f2203f01a6fb.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a5ccf071206d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a5ccf071206d.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5ad8c3ae7224.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5ad8c3ae7224.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f3c075e9dc47.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f3c075e9dc47.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bd0635c4b31d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bd0635c4b31d.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0686157dc0e0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0686157dc0e0.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8ff755347431.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8ff755347431.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cdc78fce0983.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cdc78fce0983.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/175230107411.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/175230107411.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8e27350301c8.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8e27350301c8.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d4ca8962d92b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d4ca8962d92b.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7aaf635181d7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7aaf635181d7.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0e0a1af4a099.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0e0a1af4a099.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/24e432e7d089.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/24e432e7d089.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/68e48c4b0fcb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/68e48c4b0fcb.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d6efc843081f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d6efc843081f.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6c6f2734ac32.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6c6f2734ac32.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a85ab5196617.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a85ab5196617.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9567ebd6c189.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9567ebd6c189.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1a27329f983a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1a27329f983a.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7eb9dbc83ac1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7eb9dbc83ac1.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/deef42d735e5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/deef42d735e5.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a2e7814607c9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a2e7814607c9.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/51a0f85a5c8d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/51a0f85a5c8d.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5f32c0a2853b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5f32c0a2853b.jpg",w:2000,h:1333},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/28a8f405a22b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/28a8f405a22b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b4d1fa5a914e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b4d1fa5a914e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8fbc4caf9571.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8fbc4caf9571.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c6ddaefc89bc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c6ddaefc89bc.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9b246027642f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9b246027642f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/38ff611bf6de.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/38ff611bf6de.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/72327f17aa65.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/72327f17aa65.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1efe82f46e74.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1efe82f46e74.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2642a12c2c5c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2642a12c2c5c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1dce5de5e593.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1dce5de5e593.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f36307864725.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f36307864725.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c0ca058ec1ee.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c0ca058ec1ee.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cec2502c1111.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cec2502c1111.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/419a37d75cc8.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/419a37d75cc8.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8f109755373e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8f109755373e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3e2a56798dce.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3e2a56798dce.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/369924f9551a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/369924f9551a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/70f9ed4800f3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/70f9ed4800f3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/718381a307d5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/718381a307d5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/191f513a5655.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/191f513a5655.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/055ed26e8ed1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/055ed26e8ed1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a01e5d8a9ba4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a01e5d8a9ba4.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7d6540056419.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7d6540056419.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d9c5b5f2375e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d9c5b5f2375e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/59461830a5a3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/59461830a5a3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/787480609db5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/787480609db5.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0b47bbb14382.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0b47bbb14382.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/02aeff4c1e38.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/02aeff4c1e38.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bec1550abc18.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bec1550abc18.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a38088278c3a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a38088278c3a.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c6b28f06bd58.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c6b28f06bd58.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/92c57cc7f308.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/92c57cc7f308.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/87163f59cae9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/87163f59cae9.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d2a520984e39.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d2a520984e39.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/056da7df7c70.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/056da7df7c70.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3c6a75c6d313.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3c6a75c6d313.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cab0fe567db1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cab0fe567db1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/692b4d62efa5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/692b4d62efa5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7b0cde4b0c84.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7b0cde4b0c84.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f3ecce56f7a2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f3ecce56f7a2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/74b2cd20e06f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/74b2cd20e06f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7dd8d7c1c431.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7dd8d7c1c431.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e488df7896df.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e488df7896df.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/73cdcc6d12f4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/73cdcc6d12f4.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/462503f6bc8f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/462503f6bc8f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c45fdeada7a3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c45fdeada7a3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d39038240364.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d39038240364.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/44dc6c56dad4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/44dc6c56dad4.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e5a6b8bf4d51.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e5a6b8bf4d51.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8aecce3b5cea.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8aecce3b5cea.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/91987d8a4679.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/91987d8a4679.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1d3317ff045e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1d3317ff045e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0cf1309f14ee.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0cf1309f14ee.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3107c1ea3bb1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3107c1ea3bb1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/37922a0a75ff.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/37922a0a75ff.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fce800a939b5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fce800a939b5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fbf84a79d7b9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fbf84a79d7b9.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f7e99fd6701b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f7e99fd6701b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4fad2b4e82b1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4fad2b4e82b1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/121712bb6984.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/121712bb6984.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/009b710df796.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/009b710df796.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7d723d7a8f1b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7d723d7a8f1b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d06f7a744fd5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d06f7a744fd5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/69f0499a08ee.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/69f0499a08ee.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6b6ab8a82dc0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6b6ab8a82dc0.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9fe450197bdd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9fe450197bdd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d231a509e09e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d231a509e09e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/031fd7d2b094.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/031fd7d2b094.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/20f28ad05f6e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/20f28ad05f6e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5b72603363a3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5b72603363a3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1a110a0ba402.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1a110a0ba402.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/90ca5e12de10.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/90ca5e12de10.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/de6719008389.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/de6719008389.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2f5b03a6ce3a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2f5b03a6ce3a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/72ab926edbdf.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/72ab926edbdf.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5359dd579289.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5359dd579289.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/51d415ea08da.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/51d415ea08da.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/65fc3e77c315.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/65fc3e77c315.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9c483e6b3bbc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9c483e6b3bbc.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f0ef9bf0e229.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f0ef9bf0e229.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/282b841f23b1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/282b841f23b1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/917dd9ce91e1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/917dd9ce91e1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9a6137ac60e1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9a6137ac60e1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1afded822e5b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1afded822e5b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e956830e4de7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e956830e4de7.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1c330c7f0a46.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1c330c7f0a46.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1682f688c834.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1682f688c834.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/dae271cd8bd5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/dae271cd8bd5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b9d7bd293934.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b9d7bd293934.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9f45472751b6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9f45472751b6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7dc0f892e4f1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7dc0f892e4f1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9df7c6a8ec26.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9df7c6a8ec26.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/02b89f759277.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/02b89f759277.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/5c2e45d544e6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/5c2e45d544e6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c4765e216872.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c4765e216872.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f9d87bbc2acf.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f9d87bbc2acf.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f856b2951650.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f856b2951650.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f53dd4fc981e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f53dd4fc981e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2e7b61d17ee7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2e7b61d17ee7.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/06b61ce03fc5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/06b61ce03fc5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/69e1c688737f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/69e1c688737f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/35f41d2b7381.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/35f41d2b7381.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bca94170d43f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bca94170d43f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/1f9940bc6770.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/1f9940bc6770.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/07d85d184ab2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/07d85d184ab2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4dff955743e5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4dff955743e5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9dce238889c3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9dce238889c3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/66b30041a7f0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/66b30041a7f0.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/717148b04dde.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/717148b04dde.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4fca050cb4d1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4fca050cb4d1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/33b6f92df5e6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/33b6f92df5e6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/596cd680219f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/596cd680219f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/638df14f5221.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/638df14f5221.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/aee478160496.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/aee478160496.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/455030e08526.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/455030e08526.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/83cb567717a3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/83cb567717a3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0086b7f2df5d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0086b7f2df5d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/55e8704b26ed.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/55e8704b26ed.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/26c20b680d62.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/26c20b680d62.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cd106f472a13.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cd106f472a13.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/bb81e997838e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/bb81e997838e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d9e0b8829bbd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d9e0b8829bbd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d33e4557557c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d33e4557557c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/83777ef2ce0c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/83777ef2ce0c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/805eb5a848a0.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/805eb5a848a0.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c5ef8ebb6ebc.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c5ef8ebb6ebc.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/3b6c0130e200.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/3b6c0130e200.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9601416d7c02.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9601416d7c02.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7368bc136c39.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7368bc136c39.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/be854d9b16ac.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/be854d9b16ac.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/f123fdb79ed3.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/f123fdb79ed3.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/518e7406f3b6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/518e7406f3b6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2387ca0677d2.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2387ca0677d2.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/24c2b8ad944e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/24c2b8ad944e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/08f633aa8111.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/08f633aa8111.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/ff0e5dbde733.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/ff0e5dbde733.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/51072d9ee34d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/51072d9ee34d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c597906b3a76.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c597906b3a76.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/39f12c6437b9.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/39f12c6437b9.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c11dede84d45.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c11dede84d45.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d918ef4a1611.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d918ef4a1611.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/deb7c8fc4b37.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/deb7c8fc4b37.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fe033e669340.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fe033e669340.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/d5dd0874083c.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/d5dd0874083c.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/885ad082dc1d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/885ad082dc1d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/fedce38c87cb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/fedce38c87cb.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b2ab2755dbfd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b2ab2755dbfd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/7d4420ac5e72.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/7d4420ac5e72.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/69db7e8f55f6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/69db7e8f55f6.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/c39b5c644f2b.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/c39b5c644f2b.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/db99a2650f34.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/db99a2650f34.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/15e908c1995e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/15e908c1995e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/cc1106778dc1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/cc1106778dc1.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8f3262c24f8f.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8f3262c24f8f.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8862a8f32dc6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8862a8f32dc6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/548f8a7ee428.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/548f8a7ee428.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/9209ab7e4896.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/9209ab7e4896.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/54ed576ed3ce.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/54ed576ed3ce.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/92a28c8c23f5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/92a28c8c23f5.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e7b9b920dae4.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e7b9b920dae4.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a4d7695616d7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a4d7695616d7.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/56ca25e5f5df.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/56ca25e5f5df.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/a285c605a711.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/a285c605a711.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/2bc0a751e82a.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/2bc0a751e82a.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b94c8bc72680.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b94c8bc72680.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/16efcf0db0bd.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/16efcf0db0bd.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/37884451f04e.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/37884451f04e.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/6384bf6273eb.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/6384bf6273eb.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e1e3fd8c14f5.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e1e3fd8c14f5.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/e17a8fdc1c73.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/e17a8fdc1c73.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/0c99fec56434.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/0c99fec56434.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/01ebb68fc0b1.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/01ebb68fc0b1.jpg",w:1335,h:2000},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/99d791fc8c29.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/99d791fc8c29.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/eb2e7db4dae7.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/eb2e7db4dae7.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/8f4e5f105c1d.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/8f4e5f105c1d.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/4ffa070768a6.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/4ffa070768a6.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/aa16f4ea82ea.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/aa16f4ea82ea.jpg",w:2000,h:1335},
+    {t:"https://websitegallery.blob.core.windows.net/gallery/thumb/b2d750d60e66.jpg",f:"https://websitegallery.blob.core.windows.net/gallery/large/b2d750d60e66.jpg",w:2000,h:1335}
+  ];
+
+  (function(){
+    var grid = document.getElementById('galGrid');
+    if(!grid) return;
+    var ZOOM = '<span class="zoom"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M11 8v6M8 11h6"/></svg></span>';
+    PHOTOS.forEach(function(p, idx){
+      var fig = document.createElement('figure');
+      fig.className = 'tile'; fig.tabIndex = 0; fig.setAttribute('role','button');
+      fig.setAttribute('aria-label', p.alt || ('Fotka ' + (idx+1)));
+      var img = document.createElement('img');
+      img.src = p.t; img.alt = ''; img.loading = 'lazy'; img.decoding = 'async';
+      if(p.w) img.width = p.w; if(p.h) img.height = p.h;
+      fig.appendChild(img);
+      fig.insertAdjacentHTML('beforeend', ZOOM);
+      fig.addEventListener('click', function(){ openLb(idx); });
+      fig.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openLb(idx); } });
+      grid.appendChild(fig);
+    });
+  })();
+
+  var cur = 0;
+  var lb = document.getElementById('lightbox');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var lbCount = document.getElementById('lbCount');
+  function showLb(i){
+    cur = (i + PHOTOS.length) % PHOTOS.length;
+    var p = PHOTOS[cur];
+    lbImg.src = p.f; lbImg.alt = '';
+    lbCap.textContent = '';
+    lbCount.textContent = (cur+1) + ' / ' + PHOTOS.length;
+  }
+  function openLb(i){ showLb(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; try { lb.focus(); } catch(e){} }
+  function closeLb(){ lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.src = ''; }
+  (function(){
+    if(!lb) return;
+    document.getElementById('lbClose').addEventListener('click', closeLb);
+    document.getElementById('lbPrev').addEventListener('click', function(e){ e.stopPropagation(); showLb(cur-1); });
+    document.getElementById('lbNext').addEventListener('click', function(e){ e.stopPropagation(); showLb(cur+1); });
+    lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+    document.addEventListener('keydown', function(e){
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLb();
+      else if(e.key === 'ArrowLeft') showLb(cur-1);
+      else if(e.key === 'ArrowRight') showLb(cur+1);
+    });
+  })();
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
