@@ -393,6 +393,14 @@
         </div>
 
         <div class="tl-item reveal">
+          <div class="tl-date" data-i18n="d_nis2">Září 2026 – současnost</div>
+          <div class="tl-role" data-i18n="r_nis2">NIS2 Architekt</div>
+          <div class="tl-company" data-i18n="c_diamo">DIAMO, státní podnik</div>
+          <div class="tl-desc" data-i18n="ds_nis2">Návrh a zavedení bezpečnostní architektury pro soulad se směrnicí NIS2 — analýza rizik, procesy řízení kybernetické bezpečnosti a technická opatření pro kritickou infrastrukturu.</div>
+          <div class="tl-tags"><span>NIS2</span><span data-i18n="tag_cyber">Kybernetická bezpečnost</span><span data-i18n="tag_risk">Řízení rizik</span><span data-i18n="tag_secarch">Bezpečnostní architektura</span></div>
+        </div>
+
+        <div class="tl-item reveal">
           <div class="tl-date" data-i18n="d_diamo">Prosinec 2025 – současnost</div>
           <div class="tl-role">IT System Architect</div>
           <div class="tl-company" data-i18n="c_diamo">DIAMO, státní podnik</div>
@@ -648,6 +656,13 @@
     c_diamo:  {cs:"DIAMO, státní podnik", en:"DIAMO, state enterprise", de:"DIAMO, Staatsunternehmen", fr:"DIAMO, entreprise d'État"},
     ds_diamo: {cs:"Návrh a architektura informačních systémů.", en:"Design and architecture of information systems.", de:"Entwurf und Architektur von Informationssystemen.", fr:"Conception et architecture de systèmes d'information."},
 
+    d_nis2:   {cs:"Září 2026 – současnost", en:"September 2026 – Present", de:"September 2026 – heute", fr:"Septembre 2026 – aujourd'hui"},
+    r_nis2:   {cs:"NIS2 Architekt", en:"NIS2 Architect", de:"NIS2-Architekt", fr:"Architecte NIS2"},
+    ds_nis2:  {cs:"Návrh a zavedení bezpečnostní architektury pro soulad se směrnicí NIS2 — analýza rizik, procesy řízení kybernetické bezpečnosti a technická opatření pro kritickou infrastrukturu.", en:"Design and roll-out of security architecture for NIS2 directive compliance — risk analysis, cybersecurity governance processes and technical measures for critical infrastructure.", de:"Entwurf und Einführung der Sicherheitsarchitektur für die NIS2-Konformität — Risikoanalyse, Prozesse der Cybersicherheitssteuerung und technische Maßnahmen für kritische Infrastruktur.", fr:"Conception et déploiement de l'architecture de sécurité pour la conformité à la directive NIS2 — analyse des risques, processus de gouvernance de la cybersécurité et mesures techniques pour les infrastructures critiques."},
+    tag_cyber:   {cs:"Kybernetická bezpečnost", en:"Cybersecurity", de:"Cybersicherheit", fr:"Cybersécurité"},
+    tag_risk:    {cs:"Řízení rizik", en:"Risk management", de:"Risikomanagement", fr:"Gestion des risques"},
+    tag_secarch: {cs:"Bezpečnostní architektura", en:"Security architecture", de:"Sicherheitsarchitektur", fr:"Architecture de sécurité"},
+
     d_osvc:   {cs:"Prosinec 2020 – současnost", en:"December 2020 – Present", de:"Dezember 2020 – heute", fr:"Décembre 2020 – aujourd'hui"},
     r_osvc:   {cs:"Senior Solutions Architect · OSVČ", en:"Senior Solutions Architect · Self-employed", de:"Senior Solutions Architect · Selbstständig", fr:"Senior Solutions Architect · Indépendant"},
     ds_osvc:  {cs:"Nezávislý konzultant a architekt řešení se specializací na cloud.", en:"Independent consultant and solutions architect specialising in cloud.", de:"Unabhängiger Berater und Lösungsarchitekt mit Spezialisierung auf Cloud.", fr:"Consultant indépendant et architecte de solutions spécialisé dans le cloud."},
@@ -734,7 +749,6 @@
     document.querySelectorAll('.langswitch button').forEach(function(b){
       b.classList.toggle('active', b.getAttribute('data-lang') === lang);
     });
-    try { localStorage.setItem('lang', lang); } catch(e){}
     try {
       var url = new URL(window.location.href);
       if(lang === 'cs') url.searchParams.delete('lang'); else url.searchParams.set('lang', lang);
@@ -746,9 +760,7 @@
     var initial = 'cs';
     try {
       var p = new URLSearchParams(window.location.search).get('lang');
-      var stored = localStorage.getItem('lang');
       if(p && SUPPORTED.indexOf(p) !== -1) initial = p;
-      else if(stored && SUPPORTED.indexOf(stored) !== -1) initial = stored;
       else {
         var navLang = (navigator.language || '').slice(0,2).toLowerCase();
         if(SUPPORTED.indexOf(navLang) !== -1) initial = navLang;
