@@ -213,6 +213,8 @@
   .tl-date{font-size:.82rem;color:var(--accent);font-weight:600;letter-spacing:.02em;text-transform:uppercase}
   .tl-role{font-family:'Lora';font-size:1.2rem;font-weight:600;margin-top:2px}
   .tl-company{color:var(--ink-soft);font-weight:500;font-size:.98rem}
+  .tl-company a{border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+  .tl-company a:hover{color:var(--accent);border-bottom-color:var(--accent)}
   .tl-desc{margin-top:8px;color:#54493f;font-size:.96rem}
   .tl-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
   .tl-tags span{background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:3px 12px;font-size:.78rem;color:var(--ink-soft)}
@@ -292,7 +294,6 @@
   "url": "https://www.tomaskyjovsky.cz/",
   "image": "https://www.tomaskyjovsky.cz/og.png",
   "email": "mailto:kyjovsky.tomas@tomaskyjovsky.cz",
-  "telephone": "+420723661257",
   "address": { "@type": "PostalAddress", "addressLocality": "Ústí nad Labem", "addressCountry": "CZ" },
   "sameAs": ["https://cz.linkedin.com/in/tomáš-kyjovský-210a3232"],
   "worksFor": { "@type": "Organization", "name": "EWM HIGHTEC WELDING" },
@@ -371,7 +372,7 @@
         <p data-i18n-html="about_p2">Léta jsem spojený s <b>EWM HIGHTEC WELDING</b>, kde se starám o IT provoz i o <i>Digital Welding Solutions</i>. Souběžně pracuji jako nezávislý konzultant a architekt, navrhuji řešení v Microsoft Azure i Amazon AWS a pomáhám firmám v Česku, Německu i za oceánem. Baví mě propojovat sítě, bezpečnost, databáze a cloud do jednoho fungujícího celku.</p>
         <div class="about-highlights">
           <div class="chip"><b>20+</b><span data-i18n="chip_years">let v IT</span></div>
-          <div class="chip"><b>3</b><span data-i18n="chip_countries">země, kde působím</span></div>
+          <div class="chip"><b>5</b><span data-i18n="chip_countries">zemí, kde působím</span></div>
           <div class="chip"><b>Cloud</b><span data-i18n="chip_cloud">Azure &amp; AWS architekt</span></div>
           <div class="chip"><b>MSc</b><span data-i18n="chip_edu">MFF UK Praha</span></div>
         </div>
@@ -385,11 +386,27 @@
       <div class="timeline">
 
         <div class="tl-item reveal">
+          <div class="tl-date" data-i18n="d_suitefy">Od prosince 2026</div>
+          <div class="tl-role" data-i18n="r_suitefy">IT Administrator – DACH</div>
+          <div class="tl-company"><a href="https://www.suiteify.com" target="_blank" rel="noopener">Suiteify.com</a> · Wels · Nürnberg · Hamburg</div>
+          <div class="tl-desc" data-i18n="ds_suitefy">Správa IT infrastruktury a podpora uživatelů pro pobočky ve Welsu, Norimberku a Hamburku.</div>
+          <div class="tl-tags"><span>Citrix</span><span>Hyper-V</span><span>Check Point</span><span>Aruba</span><span>Multi-site</span></div>
+        </div>
+
+        <div class="tl-item reveal">
           <div class="tl-date" data-i18n="d_ewmit">Prosinec 2015 – současnost</div>
           <div class="tl-role">IT Manager &amp; Digital Welding Solutions</div>
           <div class="tl-company">EWM HIGHTEC WELDING s.r.o.</div>
           <div class="tl-desc" data-i18n="ds_ewmit">Vedení IT týmu, správa i rozvoj infrastruktury a projektů napříč pobočkami. Návrh cloudové architektury, síťování a bezpečnosti; člen týmu Digital Welding Solutions.</div>
           <div class="tl-tags"><span>VMware / vDirector</span><span>Cisco</span><span>Sophos</span><span>HPE</span><span>SD-WAN</span><span>Azure / AWS</span></div>
+        </div>
+
+        <div class="tl-item reveal">
+          <div class="tl-date" data-i18n="d_nis2">Září 2026 – současnost</div>
+          <div class="tl-role" data-i18n="r_nis2">NIS2 Architekt</div>
+          <div class="tl-company" data-i18n="c_diamo">DIAMO, státní podnik</div>
+          <div class="tl-desc" data-i18n="ds_nis2">Návrh a zavedení bezpečnostní architektury pro soulad se směrnicí NIS2 — analýza rizik, procesy řízení kybernetické bezpečnosti a technická opatření pro kritickou infrastrukturu.</div>
+          <div class="tl-tags"><span>NIS2</span><span data-i18n="tag_cyber">Kybernetická bezpečnost</span><span data-i18n="tag_risk">Řízení rizik</span><span data-i18n="tag_secarch">Bezpečnostní architektura</span></div>
         </div>
 
         <div class="tl-item reveal">
@@ -500,13 +517,13 @@
         <div class="skill-group">
           <h4 data-i18n="sk_cloud">Cloud &amp; infrastruktura</h4>
           <div class="skill-tags">
-            <span>Microsoft Azure</span><span>Amazon AWS</span><span>VMware / vDirector</span><span>SD-WAN</span><span>Windows Server</span><span>HPE</span>
+            <span>Microsoft Azure</span><span>Amazon AWS</span><span>VMware / vDirector</span><span>Citrix</span><span>SD-WAN</span><span>Windows Server</span><span>HPE</span>
           </div>
         </div>
         <div class="skill-group">
           <h4 data-i18n="sk_net">Sítě &amp; bezpečnost</h4>
           <div class="skill-tags">
-            <span>Cisco Networking</span><span>Sophos Security</span><span data-i18n="sk_neteng">Network Engineering</span>
+            <span>Cisco Networking</span><span>Sophos Security</span><span>Check Point</span><span data-i18n="sk_neteng">Network Engineering</span>
           </div>
         </div>
         <div class="skill-group">
@@ -566,10 +583,6 @@
           <a href="mailto:kyjovsky.tomas@tomaskyjovsky.cz">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
             kyjovsky.tomas@tomaskyjovsky.cz
-          </a>
-          <a href="tel:+420723661257">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.5 2.8.6a2 2 0 0 1 1.7 2Z"/></svg>
-            +420 723 661 257
           </a>
           <a href="https://www.tomaskyjovsky.cz" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg>
@@ -632,11 +645,16 @@
       fr:"Depuis des années, je suis lié à <b>EWM HIGHTEC WELDING</b>, où je gère l'exploitation IT et <i>Digital Welding Solutions</i>. En parallèle, je travaille comme consultant et architecte indépendant, je conçois des solutions dans Microsoft Azure et Amazon AWS et j'accompagne des entreprises en Tchéquie, en Allemagne et outre-mer. J'aime relier réseaux, sécurité, bases de données et cloud en un ensemble cohérent."
     },
     chip_years:     {cs:"let v IT", en:"years in IT", de:"Jahre in der IT", fr:"ans dans l'IT"},
-    chip_countries: {cs:"země, kde působím", en:"countries I work in", de:"Länder, in denen ich tätig bin", fr:"pays où je travaille"},
+    chip_countries: {cs:"zemí, kde působím", en:"countries I work in", de:"Länder, in denen ich tätig bin", fr:"pays où je travaille"},
     chip_cloud:     {cs:"Azure &amp; AWS architekt", en:"Azure &amp; AWS architect", de:"Azure- &amp; AWS-Architekt", fr:"architecte Azure &amp; AWS"},
     chip_edu:       {cs:"MFF UK Praha", en:"Charles University Prague", de:"Karls-Universität Prag", fr:"Université Charles, Prague"},
 
     d_ewmit:  {cs:"Prosinec 2015 – současnost", en:"December 2015 – Present", de:"Dezember 2015 – heute", fr:"Décembre 2015 – aujourd'hui"},
+    d_suitefy:  {cs:"Od prosince 2026", en:"From December 2026", de:"Ab Dezember 2026", fr:"À partir de décembre 2026"},
+    r_suitefy:  {cs:"IT Administrator – DACH", en:"IT Administrator – DACH", de:"IT-Administrator – DACH", fr:"Administrateur IT – DACH"},
+    ds_suitefy: {cs:"Správa IT infrastruktury a podpora uživatelů pro pobočky ve Welsu, Norimberku a Hamburku.", en:"IT infrastructure administration and user support for the branches in Wels, Nürnberg and Hamburg.", de:"Verwaltung der IT-Infrastruktur und Anwenderbetreuung für die Standorte Wels, Nürnberg und Hamburg.", fr:"Administration de l'infrastructure IT et support utilisateur pour les sites de Wels, Nuremberg et Hambourg."},
+    tag_itadmin:     {cs:"Správa IT", en:"IT administration", de:"IT-Administration", fr:"Administration IT"},
+    tag_usersupport: {cs:"Podpora uživatelů", en:"User support", de:"Anwendersupport", fr:"Support utilisateur"},
     ds_ewmit: {
       cs:"Vedení IT týmu, správa i rozvoj infrastruktury a projektů napříč pobočkami. Návrh cloudové architektury, síťování a bezpečnosti; člen týmu Digital Welding Solutions.",
       en:"Leading the IT team, managing and developing infrastructure and projects across sites. Designing cloud architecture, networking and security; member of the Digital Welding Solutions team.",
@@ -647,6 +665,13 @@
     d_diamo:  {cs:"Prosinec 2025 – současnost", en:"December 2025 – Present", de:"Dezember 2025 – heute", fr:"Décembre 2025 – aujourd'hui"},
     c_diamo:  {cs:"DIAMO, státní podnik", en:"DIAMO, state enterprise", de:"DIAMO, Staatsunternehmen", fr:"DIAMO, entreprise d'État"},
     ds_diamo: {cs:"Návrh a architektura informačních systémů.", en:"Design and architecture of information systems.", de:"Entwurf und Architektur von Informationssystemen.", fr:"Conception et architecture de systèmes d'information."},
+
+    d_nis2:   {cs:"Září 2026 – současnost", en:"September 2026 – Present", de:"September 2026 – heute", fr:"Septembre 2026 – aujourd'hui"},
+    r_nis2:   {cs:"NIS2 Architekt", en:"NIS2 Architect", de:"NIS2-Architekt", fr:"Architecte NIS2"},
+    ds_nis2:  {cs:"Návrh a zavedení bezpečnostní architektury pro soulad se směrnicí NIS2 — analýza rizik, procesy řízení kybernetické bezpečnosti a technická opatření pro kritickou infrastrukturu.", en:"Design and roll-out of security architecture for NIS2 directive compliance — risk analysis, cybersecurity governance processes and technical measures for critical infrastructure.", de:"Entwurf und Einführung der Sicherheitsarchitektur für die NIS2-Konformität — Risikoanalyse, Prozesse der Cybersicherheitssteuerung und technische Maßnahmen für kritische Infrastruktur.", fr:"Conception et déploiement de l'architecture de sécurité pour la conformité à la directive NIS2 — analyse des risques, processus de gouvernance de la cybersécurité et mesures techniques pour les infrastructures critiques."},
+    tag_cyber:   {cs:"Kybernetická bezpečnost", en:"Cybersecurity", de:"Cybersicherheit", fr:"Cybersécurité"},
+    tag_risk:    {cs:"Řízení rizik", en:"Risk management", de:"Risikomanagement", fr:"Gestion des risques"},
+    tag_secarch: {cs:"Bezpečnostní architektura", en:"Security architecture", de:"Sicherheitsarchitektur", fr:"Architecture de sécurité"},
 
     d_osvc:   {cs:"Prosinec 2020 – současnost", en:"December 2020 – Present", de:"Dezember 2020 – heute", fr:"Décembre 2020 – aujourd'hui"},
     r_osvc:   {cs:"Senior Solutions Architect · OSVČ", en:"Senior Solutions Architect · Self-employed", de:"Senior Solutions Architect · Selbstständig", fr:"Senior Solutions Architect · Indépendant"},
